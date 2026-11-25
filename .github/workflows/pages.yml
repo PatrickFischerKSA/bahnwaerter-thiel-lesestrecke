@@ -40,6 +40,8 @@ jobs:
         run: |
           for attempt in $(seq 1 12); do
             if gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" --jq '.artifacts[].name' | grep -Fxq "$ARTIFACT_NAME"; then
+              # Pages and Actions metadata can become visible at different times.
+              sleep 10
               exit 0
             fi
             sleep 5
