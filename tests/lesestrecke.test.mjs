@@ -27,5 +27,14 @@ test('explicit incorrect facts get sourced corrections, negations do not',()=>{
 });
 test('empty and unrelated answers are not accepted',()=>{assert.equal(assess('',chapters[0].questions[0].criteria).found.length,0);assert.equal(assess('Pizza',chapters[0].questions[0].criteria).found.length,0);});
 test('reader precedes questions and original saved-work key remains',()=>{
- const source=readFileSync(new URL('../app/page.tsx',import.meta.url),'utf8');assert.ok(source.indexOf('className="reading-grid"')<source.indexOf('className="questions"'));assert.ok(source.includes('bahnwaerter-lesestrecke:v2'));assert.ok(!source.includes('disabled='));assert.ok(source.includes('if(ready)'));assert.equal((readFileSync(new URL('../app/legacy-data.ts',import.meta.url),'utf8').match(/id: "/g)||[]).length,7);
+ const source=readFileSync(new URL('../app/page.tsx',import.meta.url),'utf8');assert.ok(source.indexOf('className="reading-grid"')<source.indexOf('className="questions"'));assert.ok(source.includes('bahnwaerter-lesestrecke:v2'));assert.ok(!source.includes('disabled='));assert.ok(/if\s*\(ready\)/.test(source));assert.equal((readFileSync(new URL('../app/legacy-data.ts',import.meta.url),'utf8').match(/id: "/g)||[]).length,7);
+});
+test('investigation integrates all supplied passage and theory material',()=>{
+ const m=JSON.parse(readFileSync(new URL('../app/imported-material.json',import.meta.url)));assert.equal(m.modules.length,9);assert.equal(m.modules.flatMap(x=>x.entries).length,36);assert.equal(m.modules.flatMap(x=>x.entries.flatMap(e=>e.prompts)).length,108);assert.equal(m.theory.length,3);assert.equal(m.lessons.length,7);
+ for(const mod of m.modules)for(const e of mod.entries){assert.ok(e.refs.length);e.refs.forEach(p=>assert.ok(text.some(t=>t.page===p)));assert.ok(e.pageHint);}
+ const demo=JSON.parse(readFileSync(new URL('../app/demo-material.json',import.meta.url)));assert.equal(demo.segments.length,4);assert.equal(demo.tasks.length,3);
+});
+test('case starts from the ending and separates historical law from later transfer',()=>{
+ const source=readFileSync(new URL('../app/page.tsx',import.meta.url),'utf8');assert.ok(/useState\(["']fall["']\)/.test(source));assert.ok(source.indexOf('01 · Fall und Massstab')<source.indexOf('02 · Vorgeschichte rekonstruieren'));
+ const investigation=readFileSync(new URL('../app/investigation.tsx',import.meta.url),'utf8').replace(/\s+/g,' ');assert.ok(investigation.includes('kein im Text')||investigation.includes('Ein genaues Tatdatum'));assert.ok(investigation.includes('§ 51'));assert.ok(investigation.includes('nicht automatisch eine Einweisung'));assert.ok(investigation.includes('keine Beweise im Fall Thiel'));assert.ok(investigation.includes('case:evidence'));assert.ok(investigation.includes('thiel-ermittlungsbericht.md'));
 });

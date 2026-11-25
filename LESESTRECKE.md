@@ -26,3 +26,13 @@ Dropbox-Streaming wird erst beim Laden eines Filmfensters gestartet. Der Player 
 - GitHub Actions prüft und veröffentlicht bei Push nach `main`.
 
 Alte Vinext-/Cloudflare-Starterdateien bleiben im Repository, werden für diese GitHub-Pages-Ausgabe jedoch nicht verwendet. Der TypeScript-Prüfbereich umfasst die aktuelle Next-App.
+
+## Ermittlungsfassung (25. November 2026)
+
+Auf ausdrücklichen Wunsch beginnt die neue Fassung beim Schluss: `#fall` fragt „Charité oder Gefängnis?“. Der bisherige chronologische Leseraum bleibt zur Rekonstruktion vollständig bestehen. `#kontext` unterscheidet Erscheinungsjahr und unbestimmtes Tatdatum, Kaiserreich, Familienwirtschaft, Bahnarbeit, historischen § 51 und institutionelle Psychiatrie. Die Überführung in die Charité wird ausdrücklich nicht als Urteil ausgegeben.
+
+`app/imported-material.json` übernimmt den Inhalt von `public/reader/data.js` aus dem angeforderten Repository `bahnwaerter_lektueretool`: neun Module, 36 Einträge / 108 Fragen, sieben Arbeitsbündel, drei Theorie-Videos und den ursprünglichen Arbeitsauftrag. Die alten Seitenangaben bleiben dokumentiert; `refs` enthält neu zugeordnete gedruckte Textseiten. Interpretationsvorgaben erscheinen als prüfbare Ausgangsthesen. `app/demo-material.json` bewahrt den didaktischen Demobestand; die vier erfundenen Textsegmente sind explizit keine Hauptmann-Zitate. Der vollständige Quellstand liegt zusätzlich als ZIP in `public/material` (Commit im JSON dokumentiert).
+
+`#spuren` speichert Herkunft, Fundstelle, Befund, These, Gegenlesart und Beweiswert. Revisionen erzeugen neue Registerfassungen. `#bericht` führt Ergebnis, Begründung, Gegenbefund, Tatzeit, Beweisgrenzen und Revisionskriterium zusammen. Berichte sind unabhängig von Pflichtfeldern exportierbar. Die Strukturprüfung bewertet nur ausgefüllte Bereiche, nicht die Richtigkeit des Ergebnisses. Die neuen Daten liegen als `case:`- und `material:`-Einträge im bisherigen Speicherobjekt und werden durch den bestehenden JSON-Export gesichert.
+
+Die servergestützte Klassenverwaltung, Authentifizierung, SEB-Prüfungslogik und Mehrbenutzer-Reviews des Ausgangsprojekts werden nicht als funktionsfähige GitHub-Pages-Funktionen behauptet. Ihr Quellcode bleibt im Quellarchiv; das gesamte fachliche Material ist in der Arbeitsakte erschlossen.
