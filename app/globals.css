@@ -989,3 +989,25 @@ figure {
     margin: 2rem 0;
   }
 }
+
+/* Historische Quellen als einzeln aufklappbare Aktenblätter. */
+.source-orientation { border-left: 3px solid var(--gold, #a7792e); padding: 1rem 1.4rem; margin: 1.5rem 0; }
+.source-orientation p { margin: .5rem 0; }
+.source-jumps { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin: 2rem 0; }
+.source-dossier { border: 0; border-top: 1px solid #9ca99b; border-radius: 0; margin: 0; padding: 0; scroll-margin-top: 2rem; }
+.source-dossier > summary { display: flex; align-items: center; gap: 1rem; padding: 1.5rem .25rem; cursor: pointer; }
+.source-dossier > summary::before { content: '+'; font-size: 1.8rem; width: 1.5rem; flex-shrink: 0; }
+.source-dossier[open] > summary::before { content: '−'; }
+.source-dossier > summary strong { font-family: Georgia, serif; font-size: clamp(1.3rem, 2.2vw, 1.8rem); }
+.source-dossier > summary small { display: block; margin-top: .4rem; font-size: 1rem; font-weight: normal; }
+.source-count { margin-left: auto; white-space: nowrap; font-size: .9rem; }
+.source-dossier-body { padding: 0 .5rem 1.5rem 2.5rem; }
+.source-leaf { max-width: 78ch; padding: 1rem 0 2rem; }
+.source-leaf + .source-leaf { border-top: 1px dashed #9ca99b; }
+.source-leaf h2 { margin: .3rem 0; }
+.source-leaf details, .source-dossier-body > details { border: 0; border-left: 2px solid #c5cdbf; border-radius: 0; padding: .6rem 1rem; margin: .75rem 0; background: transparent; }
+.source-leaf summary, .source-dossier-body > details > summary { cursor: pointer; font-weight: 600; }
+.source-leaf blockquote { font-family: Georgia, serif; font-size: 1.35rem; margin: 1.2rem 0; padding-left: 1rem; border-left: 3px solid #a7792e; }
+.source-leaf li { margin: .65rem 0; }
+.historical-file summary:focus-visible { outline: 3px solid #a7792e; outline-offset: 4px; }
+@media(max-width: 600px) { .source-dossier-body { padding-left: .5rem; } .source-count { display: none; } }

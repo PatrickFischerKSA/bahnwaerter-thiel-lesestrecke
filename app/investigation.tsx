@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import HistoricalSources from "./historical-sources";
 import material from "./imported-material.json";
 import demo from "./demo-material.json";
 import text from "./text.json";
@@ -96,6 +97,7 @@ export default function Investigation({
       <p className="lead">{lead}</p>
     </header>
   );
+  if (route === "quellen") return <HistoricalSources answers={answers} update={update} />;
   if (route === "fall")
     return (
       <article className="case-file">
@@ -381,6 +383,7 @@ export default function Investigation({
         </div>
         <section className="panel padded">
           <h2>Gang der Ermittlung</h2>
+          <p><a href="#quellen">Historische Quellenakte: Gericht, Behandlung und philosophische Kritik</a></p>
           <ol className="case-steps">
             <li>
               <a href="#kontext">
@@ -431,6 +434,7 @@ export default function Investigation({
           "Ein Fall aus der Moderne.",
           "1888 ist das Erscheinungsjahr. Ein genaues Tatdatum nennt die Novelle nicht. Der historische Massstab wird deshalb als Kontext der Veröffentlichung rekonstruiert.",
         )}
+        <p className="source-orientation"><a href="#quellen">Fünf Originalquellen: Gesetz, Gutachten, Pflege, Einrichtungen und Kritik an Strafe</a> · Drei aufklappbare Dossiers mit Fallfragen und Musterüberlegungen.</p>
         <div className="timeline">
           <article>
             <b>1871 / 1872</b>
@@ -767,6 +771,7 @@ export default function Investigation({
         )}
         <section className="panel padded">
           <p>
+            <a href="#quellen">Historische Massstäbe für den Bericht prüfen</a><br />
             <strong>Aktenstand:</strong> {evidence.length} registrierte Spuren.{" "}
             <a href="#spuren">Register öffnen</a>
           </p>

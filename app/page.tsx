@@ -326,6 +326,7 @@ export default function Home() {
             ))}
             <h2>03 · Material und Spuren</h2>
             <a href="#material">Neun Dossiers & Theorie-Videos</a>
+            <a href="#quellen" aria-current={route === "quellen" ? "page" : undefined}>Historische Quellen: Recht & Behandlung</a>
             <a href="#spuren">Spurenregister</a>
             <h2>04 · Deutungen gegenprüfen</h2>
             {stations.map((s) => (
@@ -363,7 +364,7 @@ export default function Home() {
               {notice}
             </p>
           )}
-          {["fall", "kontext", "spuren", "bericht", "material"].includes(
+          {["fall", "kontext", "spuren", "bericht", "material", "quellen"].includes(
             route,
           ) ||
           route.startsWith("material/") ||
