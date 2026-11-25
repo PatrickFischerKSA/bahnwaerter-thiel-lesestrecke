@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Bahnwärter Thiel · Lesestrecke",
-  description: "Eine literarische Lesestrecke zu Gerhart Hauptmanns Bahnwärter Thiel",
+  description: "Originaltext und DEFA-Film in acht Abschnitten, Detailfragen mit Feedback und sieben Deutungsstationen.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "anfang",
+    "title": "Alltag und erste Bindung",
+    "pages": [
+      3,
+      5
+    ],
+    "start": 0,
+    "end": 600,
+    "poster": 290,
+    "focus": "Wer ist Thiel? Beobachte zunächst Beruf, Gewohnheiten und Beziehungen.",
+    "filmnote": "Der Film gestaltet Begegnung und erste Ehe in eigenen Szenen aus. Der Text fasst mehrere Jahre in wenigen Absätzen zusammen.",
+    "questions": [
+      {
+        "id": "anfang-1",
+        "prompt": "Welche wiederkehrenden Handlungen kennzeichnen Thiel zu Beginn?",
+        "model": "Thiel erfüllt zuverlässig seinen Bahndienst und besucht sonntags die Kirche, sofern er keinen Dienst hat oder krank ist. Seine saubere Uniform, geölten Haare und festen Gewohnheiten machen die äussere Ordnung sichtbar. Die beiden berichteten Verletzungen zeigen zugleich, dass die Arbeit an der Bahn gefährlich ist. Aus regelmässigem Verhalten allein lässt sich sein Innenleben noch nicht sicher ablesen.",
+        "criteria": [
+          {
+            "label": "Beruf und Dienst",
+            "terms": [
+              "bahn*",
+              "dienst*",
+              "waerter",
+              "arbeit*"
+            ]
+          },
+          {
+            "label": "Religiöse Gewohnheit",
+            "terms": [
+              "kirche",
+              "sonntag*",
+              "gottesdienst",
+              "andacht",
+              "predigt"
+            ]
+          },
+          {
+            "label": "Sichtbares Detail",
+            "terms": [
+              "uniform",
+              "haare",
+              "gewohnheit*",
+              "regelmaess*",
+              "routine",
+              "verletz*"
+            ]
+          }
+        ],
+        "refs": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "anfang-2",
+        "prompt": "Was erfahren wir über Minna und Tobias? Trenne die Angaben des Erzählers von der Meinung der Leute.",
+        "model": "Minna ist Thiels erste Frau. Sie stirbt im Wochenbett; Tobias ist ihr gemeinsamer Sohn. Die Leute deuten Thiels kaum verändertes Auftreten so, als berühre ihn der Tod wenig. Diese Fremdwahrnehmung ist kein sicherer Beweis für fehlende Trauer. Spätere Textstellen müssen zeigen, wie er selbst an Minna gebunden bleibt.",
+        "criteria": [
+          {
+            "label": "Familienbeziehung",
+            "terms": [
+              "erste frau",
+              "minna",
+              "sohn",
+              "mutter"
+            ]
+          },
+          {
+            "label": "Tod und Geburt",
+            "terms": [
+              "wochenbett",
+              "geburt",
+              "stirbt",
+              "gestorben"
+            ]
+          },
+          {
+            "label": "Fremdwahrnehmung prüfen",
+            "terms": [
+              "leute",
+              "fremd*",
+              "schein*",
+              "trauer",
+              "beweis",
+              "deut*"
+            ]
+          }
+        ],
+        "refs": [
+          4,
+          5
+        ]
+      },
+      {
+        "id": "anfang-3",
+        "prompt": "Warum ist der Gegensatz zwischen Thiels kräftigem Körper und seinem stillen Auftreten bemerkenswert?",
+        "model": "Der Erzähler beschreibt Thiel als körperlich sehr kräftig. Daraus folgt jedoch nicht, dass er seine Beziehungen ebenso entschlossen gestaltet. Sein ruhiges, wortkarges Auftreten lässt Körperkraft und Verhalten auseinanderfallen. Das ist zunächst ein Gegensatz in der Darstellung, keine medizinische Diagnose und kein Beweis dafür, dass ein stiller Mensch zwangsläufig gewalttätig wird.",
+        "criteria": [
+          {
+            "label": "Körper",
+            "terms": [
+              "koerper*",
+              "kraeft*",
+              "kraft",
+              "herkul*",
+              "stark"
+            ]
+          },
+          {
+            "label": "Verhalten",
+            "terms": [
+              "still*",
+              "ruhig*",
+              "wortkarg*",
+              "sanft*",
+              "verhalten"
+            ]
+          },
+          {
+            "label": "Unterschied statt Automatismus",
+            "terms": [
+              "gegensatz",
+              "unterschied",
+              "nicht",
+              "kein",
+              "auseinander"
+            ]
+          }
+        ],
+        "refs": [
+          3,
+          7
+        ]
+      },
+      {
+        "id": "anfang-film",
+        "prompt": "Vergleiche Text und Film: Was siehst oder hörst du konkret? Was erfährst du im Text anders? Notiere eine Zeitmarke und eine Textstelle, bevor du die Wirkung deutest.",
+        "model": "Eine mögliche Antwort unterscheidet Beobachtung und Deutung: Im Film untersuche ich etwa eine Einstellung, eine Pause, einen Blick oder ein Geräusch und notiere die Zeitmarke. Daneben stelle ich eine konkrete Textstelle. Der Erzähler kann Gedanken benennen; der Film vermittelt Innenleben zum Beispiel durch Spiel, Montage oder Ton. Welche Wirkung entsteht, muss am gewählten Ausschnitt belegt werden. Andere textgestützte Vergleiche sind möglich.",
+        "criteria": [
+          {
+            "label": "Konkrete Filmbeobachtung",
+            "terms": [
+              "blick*",
+              "einstellung*",
+              "kamera*",
+              "ton",
+              "geraeusch*",
+              "pause*",
+              "stimme",
+              "musik",
+              "schnitt",
+              "montage"
+            ]
+          },
+          {
+            "label": "Textbeleg und Zeitmarke",
+            "terms": [
+              "textstelle",
+              "seite",
+              "zeitmarke",
+              "minute",
+              "beleg",
+              "erzaehler"
+            ]
+          },
+          {
+            "label": "Begründete Wirkung",
+            "terms": [
+              "wirkung",
+              "wirkt",
+              "dadurch",
+              "weil",
+              "vermittelt",
+              "naehe",
+              "distanz",
+              "unterschied"
+            ]
+          }
+        ],
+        "refs": [
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bindung",
+    "title": "Zweite Ehe und zwei Lebensräume",
+    "pages": [
+      6,
+      11
+    ],
+    "start": 600,
+    "end": 1380,
+    "poster": 670,
+    "focus": "Vergleiche die beobachtbaren Rollen von Lene und Minna, bevor du sie bewertest.",
+    "filmnote": "Die Verfilmung zeigt Alltag, Nähe und Erinnerung mit Körpern, Räumen und Rückblenden. Das ist nicht dieselbe Erzählform wie Hauptmanns zusammenfassender Bericht.",
+    "questions": [
+      {
+        "id": "bindung-1",
+        "prompt": "Welche Gründe nennt Thiel für die zweite Heirat?",
+        "model": "Thiel nennt die Versorgung des kleinen Tobias und das Wirtschaften im Haushalt. Die bisherige Betreuung hat das Kind mehrfach gefährdet. Ausserdem hat er Minna versprochen, für den Jungen zu sorgen. Später beschreibt der Erzähler auch Thiels körperliche Abhängigkeit von Lene. Sein erklärter Heiratsgrund und die spätere Entwicklung sind daher zu unterscheiden.",
+        "criteria": [
+          {
+            "label": "Versorgung",
+            "terms": [
+              "versorg*",
+              "betreu*",
+              "pflege",
+              "haushalt",
+              "wirtschaft*"
+            ]
+          },
+          {
+            "label": "Tobias und Versprechen",
+            "terms": [
+              "tobias",
+              "minna",
+              "versprech*",
+              "gelob*"
+            ]
+          },
+          {
+            "label": "Entwicklung unterscheiden",
+            "terms": [
+              "spaeter",
+              "abhaeng*",
+              "koerper*",
+              "unterscheid*"
+            ]
+          }
+        ],
+        "refs": [
+          5,
+          6,
+          8
+        ]
+      },
+      {
+        "id": "bindung-2",
+        "prompt": "Wie stellt der Text Lene dar, und warum ist eine reine Beschimpfung der Figur keine Analyse?",
+        "model": "Lene wird als kräftige, arbeitsame und tüchtige Wirtschafterin beschrieben, zugleich als herrschsüchtig, zanksüchtig und brutal. Eine Analyse benennt diese konkreten Zuschreibungen und ihre Herkunft. Sie untersucht auch das Frauenbild der Nachbarn, die ihrerseits Schläge gegen Lene empfehlen. Gewalt lässt sich kritisieren, ohne die Figur nur als böse Natur oder Tier abzuwerten.",
+        "criteria": [
+          {
+            "label": "Arbeit und Körper",
+            "terms": [
+              "arbeit*",
+              "wirtschaft*",
+              "kraeft*",
+              "koerper*"
+            ]
+          },
+          {
+            "label": "Herrschaft und Gewalt",
+            "terms": [
+              "herrsch*",
+              "brutal*",
+              "gewalt",
+              "zank*",
+              "schlaege"
+            ]
+          },
+          {
+            "label": "Darstellung kritisch lesen",
+            "terms": [
+              "nachbar*",
+              "erzaehler",
+              "zuschreib*",
+              "frauenbild",
+              "darstell*"
+            ]
+          }
+        ],
+        "refs": [
+          6,
+          7
+        ]
+      },
+      {
+        "id": "bindung-3",
+        "prompt": "Weshalb trennt Thiel Wohnhaus und Wärterhäuschen innerlich voneinander?",
+        "model": "Zu Hause lebt Thiel mit Lene. Das Wärterhäuschen erklärt er zum Erinnerungsraum für Minna und hält Lene zunächst davon fern. Foto, Bibel, Gesangbuch und nächtliche Andacht stützen diese Bindung. Die räumliche Trennung soll sein Gewissen beruhigen. Sie löst den Konflikt seiner Bindungen aber nicht, sondern organisiert ihn in zwei Lebensbereichen.",
+        "criteria": [
+          {
+            "label": "Zwei Räume",
+            "terms": [
+              "wohn*",
+              "haus",
+              "waerterhaeuschen",
+              "bude",
+              "raum",
+              "raeum*"
+            ]
+          },
+          {
+            "label": "Erinnerungspraktiken",
+            "terms": [
+              "minna",
+              "foto",
+              "photograph*",
+              "bibel",
+              "gesangbuch",
+              "andacht"
+            ]
+          },
+          {
+            "label": "Funktion",
+            "terms": [
+              "gewissen",
+              "trenn*",
+              "beruhig*",
+              "konflikt",
+              "bindung*"
+            ]
+          }
+        ],
+        "refs": [
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "id": "bindung-film",
+        "prompt": "Vergleiche Text und Film: Was siehst oder hörst du konkret? Was erfährst du im Text anders? Notiere eine Zeitmarke und eine Textstelle, bevor du die Wirkung deutest.",
+        "model": "Eine mögliche Antwort unterscheidet Beobachtung und Deutung: Im Film untersuche ich etwa eine Einstellung, eine Pause, einen Blick oder ein Geräusch und notiere die Zeitmarke. Daneben stelle ich eine konkrete Textstelle. Der Erzähler kann Gedanken benennen; der Film vermittelt Innenleben zum Beispiel durch Spiel, Montage oder Ton. Welche Wirkung entsteht, muss am gewählten Ausschnitt belegt werden. Andere textgestützte Vergleiche sind möglich.",
+        "criteria": [
+          {
+            "label": "Konkrete Filmbeobachtung",
+            "terms": [
+              "blick*",
+              "einstellung*",
+              "kamera*",
+              "ton",
+              "geraeusch*",
+              "pause*",
+              "stimme",
+              "musik",
+              "schnitt",
+              "montage"
+            ]
+          },
+          {
+            "label": "Textbeleg und Zeitmarke",
+            "terms": [
+              "textstelle",
+              "seite",
+              "zeitmarke",
+              "minute",
+              "beleg",
+              "erzaehler"
+            ]
+          },
+          {
+            "label": "Begründete Wirkung",
+            "terms": [
+              "wirkung",
+              "wirkt",
+              "dadurch",
+              "weil",
+              "vermittelt",
+              "naehe",
+              "distanz",
+              "unterschied"
+            ]
+          }
+        ],
+        "refs": [
+          6
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kind",
+    "title": "Tobias im Familienalltag",
+    "pages": [
+      12,
+      19
+    ],
+    "start": 1380,
+    "end": 1800,
+    "poster": 1470,
+    "focus": "Welche Fürsorge wird sichtbar, welche Belastungen werden benannt?",
+    "filmnote": "Die Vater-Kind-Szenen verdeutlichen eine Beziehung. Prüfe, welche Handlungen der Film hinzufügt oder gegenüber der Novelle anders gewichtet.",
+    "questions": [
+      {
+        "id": "kind-1",
+        "prompt": "Was verändert sich für Tobias nach der Geburt von Lenes Kind?",
+        "model": "Lenes Abneigung gegen Tobias verstärkt sich. Er muss mit seinen schwachen Kräften bei der Versorgung des kleinen Kindes helfen und wird besonders in Thiels Abwesenheit geplagt. Die Ungleichbehandlung der Kinder wird so konkret sichtbar. Sie ist Lenes Verhalten zuzuschreiben, nicht einer angeblichen Schuld des älteren Kindes.",
+        "criteria": [
+          {
+            "label": "Zweites Kind",
+            "terms": [
+              "geburt",
+              "klein*",
+              "saeugling",
+              "kind",
+              "bruder"
+            ]
+          },
+          {
+            "label": "Ungleichbehandlung",
+            "terms": [
+              "abneig*",
+              "ungleich*",
+              "plag*",
+              "bevorzug*",
+              "misshand*"
+            ]
+          },
+          {
+            "label": "Überforderung",
+            "terms": [
+              "schwach*",
+              "helfen",
+              "versorg*",
+              "kraft",
+              "ueberforder*"
+            ]
+          }
+        ],
+        "refs": [
+          12,
+          13
+        ]
+      },
+      {
+        "id": "kind-2",
+        "prompt": "Woran erkennst du Thiels Zuneigung zu Tobias?",
+        "model": "Thiel spielt mit Tobias, schnitzt Spielzeug und erhofft für ihn einen Aufstieg zum Bahnmeister. Das Sparkassenbuch trägt den Namen des Kindes und wird besonders sorgfältig aufbewahrt. Diese konkreten Handlungen belegen Fürsorge und Zukunftshoffnung. Sie müssen später mit der Frage verbunden werden, ob Thiel den Jungen auch wirksam schützt.",
+        "criteria": [
+          {
+            "label": "Gemeinsame Handlungen",
+            "terms": [
+              "spiel*",
+              "schnitz*",
+              "pfeil*",
+              "pfeif*",
+              "kind*"
+            ]
+          },
+          {
+            "label": "Zukunft",
+            "terms": [
+              "bahnmeister",
+              "zukunft",
+              "aufstieg",
+              "hoff*",
+              "sparkassenbuch"
+            ]
+          },
+          {
+            "label": "Fürsorge und Schutz",
+            "terms": [
+              "fuersorg*",
+              "zuneig*",
+              "schuetz*",
+              "schutz",
+              "verbind*"
+            ]
+          }
+        ],
+        "refs": [
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      {
+        "id": "kind-3",
+        "prompt": "Welche wirtschaftliche Veränderung bringt das neue Stück Land?",
+        "model": "Thiel erhält vom Bahnmeister einen Ackerstreifen nahe seiner Dienststelle. Lene freut sich über die Möglichkeit, ihn zu bewirtschaften. Damit rückt die Familienwirtschaft an den Ort, den Thiel bisher Minna vorbehalten hat. Der materielle Vorteil und die Auflösung seiner räumlichen Trennung gehören zusammen; das Feld ist mehr als blosse Landschaft.",
+        "criteria": [
+          {
+            "label": "Land und Lage",
+            "terms": [
+              "acker*",
+              "land",
+              "feld",
+              "dienststelle",
+              "bahndamm"
+            ]
+          },
+          {
+            "label": "Wirtschaftlicher Nutzen",
+            "terms": [
+              "wirtschaft*",
+              "anbau",
+              "materiell*",
+              "nutzen",
+              "kartoffel*"
+            ]
+          },
+          {
+            "label": "Trennung bedroht",
+            "terms": [
+              "minna",
+              "trenn*",
+              "familie",
+              "raum",
+              "raeum*"
+            ]
+          }
+        ],
+        "refs": [
+          14,
+          15,
+          31,
+          32
+        ]
+      },
+      {
+        "id": "kind-film",
+        "prompt": "Vergleiche Text und Film: Was siehst oder hörst du konkret? Was erfährst du im Text anders? Notiere eine Zeitmarke und eine Textstelle, bevor du die Wirkung deutest.",
+        "model": "Eine mögliche Antwort unterscheidet Beobachtung und Deutung: Im Film untersuche ich etwa eine Einstellung, eine Pause, einen Blick oder ein Geräusch und notiere die Zeitmarke. Daneben stelle ich eine konkrete Textstelle. Der Erzähler kann Gedanken benennen; der Film vermittelt Innenleben zum Beispiel durch Spiel, Montage oder Ton. Welche Wirkung entsteht, muss am gewählten Ausschnitt belegt werden. Andere textgestützte Vergleiche sind möglich.",
+        "criteria": [
+          {
+            "label": "Konkrete Filmbeobachtung",
+            "terms": [
+              "blick*",
+              "einstellung*",
+              "kamera*",
+              "ton",
+              "geraeusch*",
+              "pause*",
+              "stimme",
+              "musik",
+              "schnitt",
+              "montage"
+            ]
+          },
+          {
+            "label": "Textbeleg und Zeitmarke",
+            "terms": [
+              "textstelle",
+              "seite",
+              "zeitmarke",
+              "minute",
+              "beleg",
+              "erzaehler"
+            ]
+          },
+          {
+            "label": "Begründete Wirkung",
+            "terms": [
+              "wirkung",
+              "wirkt",
+              "dadurch",
+              "weil",
+              "vermittelt",
+              "naehe",
+              "distanz",
+              "unterschied"
+            ]
+          }
+        ],
+        "refs": [
+          12
+        ]
+      }
+    ]
+  },
+  {
+    "id": "eingreifen",
+    "title": "Wahrnehmen und eingreifen",
+    "pages": [
+      20,
+      25
+    ],
+    "start": 1800,
+    "end": 2160,
+    "poster": 1920,
+    "focus": "Beobachte genau, was Thiel hören, sehen und tun kann.",
+    "filmnote": "Der Film macht die Auseinandersetzung unmittelbar sichtbar und hörbar. Unterscheide das Schauspiel von den wertenden Beschreibungen des Erzählers.",
+    "questions": [
+      {
+        "id": "eingreifen-1",
+        "prompt": "Warum kehrt Thiel unerwartet nach Hause zurück? Was nimmt er dort wahr?",
+        "model": "Thiel hat sein Butterbrot vergessen und kehrt deshalb um. Vor dem Haus hört er Lenes Beschimpfungen, Geräusche von Schlägen und Tobias wimmern. Beim Eintreten sieht er den verängstigten Jungen und Lenes erregtes Verhalten. Der Zufall seiner Rückkehr verschafft ihm also konkrete Wahrnehmungen; er ist nicht nur auf Gerüchte angewiesen.",
+        "criteria": [
+          {
+            "label": "Anlass",
+            "terms": [
+              "brot",
+              "butterbrot",
+              "vergess*",
+              "umkehr*"
+            ]
+          },
+          {
+            "label": "Hören",
+            "terms": [
+              "hoert",
+              "schimpf*",
+              "schlaeg*",
+              "wimmer*",
+              "geraeusch*"
+            ]
+          },
+          {
+            "label": "Eigene Wahrnehmung",
+            "terms": [
+              "sieht",
+              "wahrnehm*",
+              "konkret",
+              "selbst",
+              "eintret*"
+            ]
+          }
+        ],
+        "refs": [
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      {
+        "id": "eingreifen-2",
+        "prompt": "Wie verändert sich Thiels Reaktion zwischen dem Hören und dem Verlassen des Hauses?",
+        "model": "Zunächst zittert Thiel; seine Muskeln spannen sich und die Hand ballt sich zur Faust. Im Zimmer richtet sich sein Blick dann begehrlich auf Lene. Der Erzähler beschreibt seine Bindung mit dem Bild eines zugleich feinen und eisernen Netzes. Schliesslich nimmt er das Brot und geht, ohne Tobias wirksam zu schützen. Diese Abfolge begründet den Vorwurf des Unterlassens.",
+        "criteria": [
+          {
+            "label": "Erste Reaktion",
+            "terms": [
+              "zitter*",
+              "faust",
+              "muskel*",
+              "erreg*"
+            ]
+          },
+          {
+            "label": "Abhängigkeit",
+            "terms": [
+              "blick",
+              "begehr*",
+              "netz",
+              "abhaeng*",
+              "lene"
+            ]
+          },
+          {
+            "label": "Unterlassener Schutz",
+            "terms": [
+              "geht",
+              "brot",
+              "unterlass*",
+              "schutz",
+              "schuetz*"
+            ]
+          }
+        ],
+        "refs": [
+          22,
+          24,
+          25
+        ]
+      },
+      {
+        "id": "eingreifen-3",
+        "prompt": "Was unterscheidet eine Erklärung seines Verhaltens von einer Entschuldigung?",
+        "model": "Die körperliche Bindung an Lene und Thiels innere Spannung können erklären, weshalb er zurückweicht. Sie machen die Misshandlung nicht richtig und beseitigen nicht automatisch seine Verantwortung als Vater. Eine begründete Analyse benennt sein Wissen und eine mögliche Schutzhandlung. Dabei wird kein klinisches oder juristisches Urteil behauptet, das der Text selbst nicht ausreichend absichert.",
+        "criteria": [
+          {
+            "label": "Erklärung",
+            "terms": [
+              "bindung",
+              "abhaeng*",
+              "erklaer*",
+              "spannung"
+            ]
+          },
+          {
+            "label": "Verantwortung",
+            "terms": [
+              "verantwort*",
+              "vater",
+              "schutz",
+              "handeln"
+            ]
+          },
+          {
+            "label": "Grenze",
+            "terms": [
+              "nicht",
+              "kein",
+              "unterscheid*",
+              "automatisch",
+              "diagnose"
+            ]
+          }
+        ],
+        "refs": [
+          24,
+          25,
+          33
+        ]
+      },
+      {
+        "id": "eingreifen-film",
+        "prompt": "Vergleiche Text und Film: Was siehst oder hörst du konkret? Was erfährst du im Text anders? Notiere eine Zeitmarke und eine Textstelle, bevor du die Wirkung deutest.",
+        "model": "Eine mögliche Antwort unterscheidet Beobachtung und Deutung: Im Film untersuche ich etwa eine Einstellung, eine Pause, einen Blick oder ein Geräusch und notiere die Zeitmarke. Daneben stelle ich eine konkrete Textstelle. Der Erzähler kann Gedanken benennen; der Film vermittelt Innenleben zum Beispiel durch Spiel, Montage oder Ton. Welche Wirkung entsteht, muss am gewählten Ausschnitt belegt werden. Andere textgestützte Vergleiche sind möglich.",
+        "criteria": [
+          {
+            "label": "Konkrete Filmbeobachtung",
+            "terms": [
+              "blick*",
+              "einstellung*",
+              "kamera*",
+              "ton",
+              "geraeusch*",
+              "pause*",
+              "stimme",
+              "musik",
+              "schnitt",
+              "montage"
+            ]
+          },
+          {
+            "label": "Textbeleg und Zeitmarke",
+            "terms": [
+              "textstelle",
+              "seite",
+              "zeitmarke",
+              "minute",
+              "beleg",
+              "erzaehler"
+            ]
+          },
+          {
+            "label": "Begründete Wirkung",
+            "terms": [
+              "wirkung",
+              "wirkt",
+              "dadurch",
+              "weil",
+              "vermittelt",
+              "naehe",
+              "distanz",
+              "unterschied"
+            ]
+          }
+        ],
+        "refs": [
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dienst",
+    "title": "Dienst, Landschaft und innere Bilder",
+    "pages": [
+      26,
+      40
+    ],
+    "start": 2160,
+    "end": 2880,
+    "poster": 2240,
+    "focus": "Lies Natur- und Technikbeschreibungen zunächst als sprachlich gestaltete Wahrnehmungen.",
+    "filmnote": "Die Filmfassung arbeitet hier mit Erinnerungsbildern und Ortswechseln. Das Vergleichsfenster ist thematisch zugeordnet; es bildet nicht jede Textseite in derselben Reihenfolge ab.",
+    "questions": [
+      {
+        "id": "dienst-1",
+        "prompt": "Welche Tätigkeiten machen den Bahnwärterdienst konkret?",
+        "model": "Thiel richtet die Bude her, pflegt die Laterne und reagiert auf die Meldung eines kommenden Zuges. Er schliesst und öffnet die Barrieren am Bahnübergang gewissenhaft. Diese geregelte Arbeit steht neben seiner inneren Unruhe. Die Signalglocke übermittelt eine betriebliche Information; sie ist nicht bloss ein unbestimmtes Symbol oder eine von Thiel gesteuerte Zugbremse.",
+        "criteria": [
+          {
+            "label": "Vorbereitung",
+            "terms": [
+              "laterne",
+              "bude",
+              "petroleum",
+              "ordnung"
+            ]
+          },
+          {
+            "label": "Sicherung",
+            "terms": [
+              "barriere*",
+              "schranke*",
+              "uebergang",
+              "schliess*"
+            ]
+          },
+          {
+            "label": "Signal",
+            "terms": [
+              "glocke",
+              "signal",
+              "meld*",
+              "zug"
+            ]
+          }
+        ],
+        "refs": [
+          26,
+          27
+        ]
+      },
+      {
+        "id": "dienst-2",
+        "prompt": "Wie werden Schienen und Zug sprachlich verwandelt?",
+        "model": "Die Geleise erscheinen als eiserne Netzmasche, später als feurige Schlangen; der Zug wird als schnaufendes Ungetüm dargestellt. Solche Vergleiche und Metaphern machen Technik bedrohlich und körperhaft erfahrbar. Sie sind sprachliche Gestaltungen, keine wörtlichen Tatsachen. Natur, Licht und Geräusche werden dabei mit der Wahrnehmung des Wärters verbunden.",
+        "criteria": [
+          {
+            "label": "Konkretes Bild",
+            "terms": [
+              "netz",
+              "schlange*",
+              "ungetuem",
+              "schnauf*"
+            ]
+          },
+          {
+            "label": "Sprachliches Verfahren",
+            "terms": [
+              "vergleich*",
+              "metapher*",
+              "bild*",
+              "personifik*"
+            ]
+          },
+          {
+            "label": "Wirkung",
+            "terms": [
+              "bedroh*",
+              "koerper*",
+              "wahrnehm*",
+              "wirkung",
+              "gefahr"
+            ]
+          }
+        ],
+        "refs": [
+          28,
+          29,
+          30,
+          37
+        ]
+      },
+      {
+        "id": "dienst-3",
+        "prompt": "Welche Einsicht gewinnt Thiel in der Einsamkeit – und was bleibt dadurch noch ungelöst?",
+        "model": "Thiel erkennt die Leidensgeschichte seines ältesten Kindes und schämt sich seiner bisherigen Duldung. Diese Einsicht zeigt, dass ihm die Gefahr nicht vollständig verborgen ist. Reue ist jedoch noch keine Schutzhandlung. Die folgende Müdigkeit, der Traum und die Vermischung von Traum und Wirklichkeit lösen Tobias konkrete Lage nicht.",
+        "criteria": [
+          {
+            "label": "Einsicht",
+            "terms": [
+              "leiden",
+              "duld*",
+              "scham",
+              "reue",
+              "erkennt"
+            ]
+          },
+          {
+            "label": "Wissen",
+            "terms": [
+              "weiss",
+              "wissen",
+              "verborgen",
+              "gefahr",
+              "bewusst"
+            ]
+          },
+          {
+            "label": "Grenze der Einsicht",
+            "terms": [
+              "schutz",
+              "handlung",
+              "noch keine",
+              "nicht",
+              "traum"
+            ]
+          }
+        ],
+        "refs": [
+          32,
+          33,
+          35,
+          36,
+          37
+        ]
+      },
+      {
+        "id": "dienst-film",
+        "prompt": "Vergleiche Text und Film: Was siehst oder hörst du konkret? Was erfährst du im Text anders? Notiere eine Zeitmarke und eine Textstelle, bevor du die Wirkung deutest.",
+        "model": "Eine mögliche Antwort unterscheidet Beobachtung und Deutung: Im Film untersuche ich etwa eine Einstellung, eine Pause, einen Blick oder ein Geräusch und notiere die Zeitmarke. Daneben stelle ich eine konkrete Textstelle. Der Erzähler kann Gedanken benennen; der Film vermittelt Innenleben zum Beispiel durch Spiel, Montage oder Ton. Welche Wirkung entsteht, muss am gewählten Ausschnitt belegt werden. Andere textgestützte Vergleiche sind möglich.",
+        "criteria": [
+          {
+            "label": "Konkrete Filmbeobachtung",
+            "terms": [
+              "blick*",
+              "einstellung*",
+              "kamera*",
+              "ton",
+              "geraeusch*",
+              "pause*",
+              "stimme",
+              "musik",
+              "schnitt",
+              "montage"
+            ]
+          },
+          {
+            "label": "Textbeleg und Zeitmarke",
+            "terms": [
+              "textstelle",
+              "seite",
+              "zeitmarke",
+              "minute",
+              "beleg",
+              "erzaehler"
+            ]
+          },
+          {
+            "label": "Begründete Wirkung",
+            "terms": [
+              "wirkung",
+              "wirkt",
+              "dadurch",
+              "weil",
+              "vermittelt",
+              "naehe",
+              "distanz",
+              "unterschied"
+            ]
+          }
+        ],
+        "refs": [
+          26
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ausflug",
+    "title": "Die Familie an der Strecke",
+    "pages": [
+      41,
+      47
+    ],
+    "start": 2880,
+    "end": 3060,
+    "poster": 2980,
+    "focus": "Verfolge Wege, Zuständigkeiten und die Nähe zur Bahn.",
+    "filmnote": "Der Film legt räumliche Beziehungen durch Einstellungen und Schnitte fest. Vergleiche die Lage im Bild mit dem beschriebenen Weg und Acker im Text.",
+    "questions": [
+      {
+        "id": "ausflug-1",
+        "prompt": "Was verändert sich, als Lene und die Kinder Thiel zur Strecke begleiten?",
+        "model": "Mit der gemeinsamen Arbeit am Feld gelangen Lene und die Kinder in Thiels bisher abgetrennten Dienst- und Erinnerungsraum. Haushalt, Kinderbetreuung und Bahnbetrieb treffen nun am selben Ort aufeinander. Die alte räumliche Trennung trägt nicht mehr. Prüfe an den Wegen und Tätigkeiten, wie der Text diese Überschneidung sichtbar macht.",
+        "criteria": [
+          {
+            "label": "Familie und Arbeit",
+            "terms": [
+              "lene",
+              "kinder",
+              "familie",
+              "feld",
+              "acker"
+            ]
+          },
+          {
+            "label": "Dienstort",
+            "terms": [
+              "bahn",
+              "dienst*",
+              "waerter*",
+              "strecke"
+            ]
+          },
+          {
+            "label": "Grenzverschiebung",
+            "terms": [
+              "trenn*",
+              "raum",
+              "raeum*",
+              "grenz*",
+              "zusammen"
+            ]
+          }
+        ],
+        "refs": [
+          41,
+          42,
+          43
+        ]
+      },
+      {
+        "id": "ausflug-2",
+        "prompt": "Wie erlebt Tobias die Strecke mit seinem Vater?",
+        "model": "Tobias erkundet mit Thiel die Umgebung, hört die Töne der Telegraphendrähte und sammelt Blumen. Die sinnliche Neugier des Kindes und die Nähe zum Vater prägen diese Passage. Dieselbe Bahnlandschaft ist zugleich ein technisch organisierter Gefahrenraum. Die Idylle darf deshalb nicht als Garantie von Sicherheit gelesen werden.",
+        "criteria": [
+          {
+            "label": "Kindliche Tätigkeiten",
+            "terms": [
+              "blumen",
+              "hoert",
+              "toene",
+              "telegraph*",
+              "erkund*"
+            ]
+          },
+          {
+            "label": "Nähe",
+            "terms": [
+              "vater",
+              "naehe",
+              "neugier",
+              "kind*"
+            ]
+          },
+          {
+            "label": "Doppelte Bedeutung",
+            "terms": [
+              "gefahr",
+              "sicher*",
+              "zugleich",
+              "idylle",
+              "bahn"
+            ]
+          }
+        ],
+        "refs": [
+          44,
+          45,
+          46
+        ]
+      },
+      {
+        "id": "ausflug-3",
+        "prompt": "Welche Fragen musst du zur Betreuung der Kinder stellen, bevor du Verantwortung beurteilst?",
+        "model": "Zuerst sind die beobachtbaren Tätigkeiten und Zuständigkeiten zu klären: Wer arbeitet am Feld, wer hat Bahndienst, wo befinden sich die Kinder und welche Anweisungen werden gegeben? Erst danach lässt sich das Verhalten bewerten. Eine räumliche Rekonstruktion und ein Textbeleg sind tragfähiger als die pauschale Behauptung, Technik oder eine einzelne Figur sei an allem schuld.",
+        "criteria": [
+          {
+            "label": "Tätigkeiten und Zuständigkeit",
+            "terms": [
+              "feld",
+              "dienst",
+              "betreu*",
+              "zustaendig*",
+              "arbeit*"
+            ]
+          },
+          {
+            "label": "Räumliche Rekonstruktion",
+            "terms": [
+              "wo",
+              "raum",
+              "raeum*",
+              "ort",
+              "kinder",
+              "weg"
+            ]
+          },
+          {
+            "label": "Beleg vor Urteil",
+            "terms": [
+              "beleg",
+              "textstelle",
+              "zuerst",
+              "danach",
+              "pauschal"
+            ]
+          }
+        ],
+        "refs": [
+          43,
+          46,
+          47
+        ]
+      },
+      {
+        "id": "ausflug-film",
+        "prompt": "Vergleiche Text und Film: Was siehst oder hörst du konkret? Was erfährst du im Text anders? Notiere eine Zeitmarke und eine Textstelle, bevor du die Wirkung deutest.",
+        "model": "Eine mögliche Antwort unterscheidet Beobachtung und Deutung: Im Film untersuche ich etwa eine Einstellung, eine Pause, einen Blick oder ein Geräusch und notiere die Zeitmarke. Daneben stelle ich eine konkrete Textstelle. Der Erzähler kann Gedanken benennen; der Film vermittelt Innenleben zum Beispiel durch Spiel, Montage oder Ton. Welche Wirkung entsteht, muss am gewählten Ausschnitt belegt werden. Andere textgestützte Vergleiche sind möglich.",
+        "criteria": [
+          {
+            "label": "Konkrete Filmbeobachtung",
+            "terms": [
+              "blick*",
+              "einstellung*",
+              "kamera*",
+              "ton",
+              "geraeusch*",
+              "pause*",
+              "stimme",
+              "musik",
+              "schnitt",
+              "montage"
+            ]
+          },
+          {
+            "label": "Textbeleg und Zeitmarke",
+            "terms": [
+              "textstelle",
+              "seite",
+              "zeitmarke",
+              "minute",
+              "beleg",
+              "erzaehler"
+            ]
+          },
+          {
+            "label": "Begründete Wirkung",
+            "terms": [
+              "wirkung",
+              "wirkt",
+              "dadurch",
+              "weil",
+              "vermittelt",
+              "naehe",
+              "distanz",
+              "unterschied"
+            ]
+          }
+        ],
+        "refs": [
+          41
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ereignis",
+    "title": "Das Ereignis und seine Folgen",
+    "pages": [
+      48,
+      59
+    ],
+    "start": 3060,
+    "end": 3840,
+    "poster": 3320,
+    "focus": "Lies diesen Abschnitt erst nach dem gemeinsamen Gang zur Strecke. Alle Stationen bleiben frei wählbar.",
+    "filmnote": "Der Film zeigt Reaktionen und körperliche Vorgänge; der Text bindet das Geschehen eng an Thiels brüchige Wahrnehmung. Vergleiche, was jeweils sichtbar bleibt oder ausgespart wird.",
+    "questions": [
+      {
+        "id": "ereignis-1",
+        "prompt": "Woran wird das Unglück zunächst erkennbar, bevor Thiel Tobias erreicht?",
+        "model": "Pfeifsignale und Bremsgeräusche unterbrechen den gewohnten Ablauf. Menschen laufen am Zug entlang, ein Bote spricht Thiel an und Lene schreit. Die Information erreicht Thiel schrittweise über Geräusche, Bewegungen und Mitteilungen. Der Text vermittelt die Katastrophe also nicht sofort als übersichtlichen Gesamtbericht.",
+        "criteria": [
+          {
+            "label": "Akustische Signale",
+            "terms": [
+              "pfiff",
+              "pfeif*",
+              "brems*",
+              "geraeusch*",
+              "schrei*"
+            ]
+          },
+          {
+            "label": "Vermittlung",
+            "terms": [
+              "bote",
+              "menschen",
+              "mitteil*",
+              "laufen",
+              "zug"
+            ]
+          },
+          {
+            "label": "Erzählweise",
+            "terms": [
+              "schritt*",
+              "wahrnehm*",
+              "bericht",
+              "information",
+              "zunaechst"
+            ]
+          }
+        ],
+        "refs": [
+          48,
+          49,
+          50
+        ]
+      },
+      {
+        "id": "ereignis-2",
+        "prompt": "Ist Tobias beim ersten Auffinden bereits nachweislich tot?",
+        "model": "Der Bote sagt, Tobias lebe noch und möglicherweise sei Hilfe möglich. Der Junge wird zum Bahnarzt gebracht. Wörter wie tote Gliedmassen oder Thiels erstarrtes Gesicht dürfen nicht gegen diese Handlungsabfolge als Beweis eines sofortigen Todes gelesen werden. Die Wortwahl und der gesicherte Ereignisablauf sind zu unterscheiden.",
+        "criteria": [
+          {
+            "label": "Lebenszeichen",
+            "terms": [
+              "lebt",
+              "leben",
+              "hilfe",
+              "atem*",
+              "halbtot"
+            ]
+          },
+          {
+            "label": "Abfolge",
+            "terms": [
+              "bahnarzt",
+              "spaeter",
+              "zurueck",
+              "leiche"
+            ]
+          },
+          {
+            "label": "Wortwahl unterscheiden",
+            "terms": [
+              "unterscheid*",
+              "wort*",
+              "beweis",
+              "nicht",
+              "abfolge"
+            ]
+          }
+        ],
+        "refs": [
+          49,
+          50,
+          51
+        ]
+      },
+      {
+        "id": "ereignis-3",
+        "prompt": "Wie kann Thiel zeitweise weiterarbeiten, obwohl seine Wahrnehmung zerfällt?",
+        "model": "Die Signalglocke unterbricht seinen Zusammenbruch und löst eingeübte Diensthandlungen aus. Gleichzeitig erlebt er die Umgebung verzerrt und spricht mit der vorgestellten Minna. Äussere Funktionsfähigkeit und innere Stabilität fallen auseinander. Daraus lässt sich eine literarische Spannung beschreiben, aber keine sichere medizinische Diagnose ableiten.",
+        "criteria": [
+          {
+            "label": "Routine als Auslöser",
+            "terms": [
+              "signal",
+              "glocke",
+              "eingeuebt*",
+              "routine",
+              "dienst"
+            ]
+          },
+          {
+            "label": "Veränderte Wahrnehmung",
+            "terms": [
+              "verzerr*",
+              "minna",
+              "vorstell*",
+              "wahrnehm*"
+            ]
+          },
+          {
+            "label": "Grenze der Deutung",
+            "terms": [
+              "diagnose",
+              "nicht",
+              "kein",
+              "auseinander",
+              "stabil*"
+            ]
+          }
+        ],
+        "refs": [
+          53,
+          54,
+          55,
+          56
+        ]
+      },
+      {
+        "id": "ereignis-film",
+        "prompt": "Vergleiche Text und Film: Was siehst oder hörst du konkret? Was erfährst du im Text anders? Notiere eine Zeitmarke und eine Textstelle, bevor du die Wirkung deutest.",
+        "model": "Eine mögliche Antwort unterscheidet Beobachtung und Deutung: Im Film untersuche ich etwa eine Einstellung, eine Pause, einen Blick oder ein Geräusch und notiere die Zeitmarke. Daneben stelle ich eine konkrete Textstelle. Der Erzähler kann Gedanken benennen; der Film vermittelt Innenleben zum Beispiel durch Spiel, Montage oder Ton. Welche Wirkung entsteht, muss am gewählten Ausschnitt belegt werden. Andere textgestützte Vergleiche sind möglich.",
+        "criteria": [
+          {
+            "label": "Konkrete Filmbeobachtung",
+            "terms": [
+              "blick*",
+              "einstellung*",
+              "kamera*",
+              "ton",
+              "geraeusch*",
+              "pause*",
+              "stimme",
+              "musik",
+              "schnitt",
+              "montage"
+            ]
+          },
+          {
+            "label": "Textbeleg und Zeitmarke",
+            "terms": [
+              "textstelle",
+              "seite",
+              "zeitmarke",
+              "minute",
+              "beleg",
+              "erzaehler"
+            ]
+          },
+          {
+            "label": "Begründete Wirkung",
+            "terms": [
+              "wirkung",
+              "wirkt",
+              "dadurch",
+              "weil",
+              "vermittelt",
+              "naehe",
+              "distanz",
+              "unterschied"
+            ]
+          }
+        ],
+        "refs": [
+          48
+        ]
+      }
+    ]
+  },
+  {
+    "id": "schluss",
+    "title": "Den Schluss lesen und vergleichen",
+    "pages": [
+      60,
+      66
+    ],
+    "start": 3840,
+    "end": 4340.04,
+    "poster": 4120,
+    "focus": "Hier folgen das Ende der Novelle und der Schluss der Verfilmung. Danach wird rückblickend gedeutet.",
+    "filmnote": "Der Schluss bleibt bewusst die letzte Filmstation. Prüfe selbst, welche Vorgänge direkt gezeigt, welche ausgelassen und welche durch Nachbilder vermittelt werden.",
+    "questions": [
+      {
+        "id": "schluss-1",
+        "prompt": "Wie verändert sich Lene nach der Rückkehr vom Bahnarzt?",
+        "model": "Lene erscheint erschöpft und verängstigt. Sie pflegt den bewusstlosen Thiel mit kalten Umschlägen und beobachtet seine Atmung. Der Text beschreibt eine Umkehr des bisherigen Machtverhältnisses. Das hebt ihre frühere Gewalt gegen Tobias nicht auf, macht aber eine ausschliesslich eindimensionale Charakterisierung unzureichend.",
+        "criteria": [
+          {
+            "label": "Pflege",
+            "terms": [
+              "pfleg*",
+              "umschlaeg*",
+              "handtuech*",
+              "wasser",
+              "atmung"
+            ]
+          },
+          {
+            "label": "Veränderung",
+            "terms": [
+              "angst",
+              "verängst*",
+              "erschoepf*",
+              "umkehr",
+              "veraender*"
+            ]
+          },
+          {
+            "label": "Frühere Gewalt bleibt",
+            "terms": [
+              "gewalt",
+              "frueher",
+              "nicht",
+              "eindimensional"
+            ]
+          }
+        ],
+        "refs": [
+          61,
+          63,
+          64
+        ]
+      },
+      {
+        "id": "schluss-2",
+        "prompt": "Wie erfahren die Lesenden von den Tötungen, und was bleibt ausgespart?",
+        "model": "Die heimkehrenden Männer entdecken die offene Wohnung und die getötete Lene sowie das getötete kleine Kind. Der eigentliche Tötungsvorgang wird nicht unmittelbar erzählt. Diese Ellipse – eine Auslassung von Geschehen – lässt das Ergebnis durch die Entdeckung hervortreten. Tobias ist zuvor an den Unfallfolgen gestorben; diese Todesfälle sind zeitlich und ursächlich zu unterscheiden.",
+        "criteria": [
+          {
+            "label": "Entdeckung",
+            "terms": [
+              "maenner",
+              "entdeck*",
+              "wohnung",
+              "finden"
+            ]
+          },
+          {
+            "label": "Auslassung",
+            "terms": [
+              "auslass*",
+              "ellipse",
+              "nicht unmittelbar",
+              "nicht erzaehlt"
+            ]
+          },
+          {
+            "label": "Unterschiedliche Todesfälle",
+            "terms": [
+              "tobias",
+              "unfall",
+              "zuvor",
+              "unterscheid*"
+            ]
+          }
+        ],
+        "refs": [
+          64,
+          65
+        ]
+      },
+      {
+        "id": "schluss-3",
+        "prompt": "Welche Bedeutung hat das braune Mützchen im Schlussbild?",
+        "model": "Thiel hält Tobias Mützchen fest und behandelt es wie ein lebendes Wesen. Der Gegenstand vergegenwärtigt die verlorene Beziehung, ersetzt aber nicht das Kind. Thiel wird von den Gleisen entfernt und nach Berlin gebracht, schliesslich in die psychiatrische Abteilung der Charité. Das Schlussbild verbindet Zärtlichkeit, Verlust und verstörende Gewaltfolgen; es ist weder eine Heilung noch ein glücklicher Abschluss.",
+        "criteria": [
+          {
+            "label": "Gegenstand und Bindung",
+            "terms": [
+              "muetz*",
+              "gegenstand",
+              "tobias",
+              "beziehung"
+            ]
+          },
+          {
+            "label": "Schlussgeschehen",
+            "terms": [
+              "gleis*",
+              "berlin",
+              "charite",
+              "psychiatr*",
+              "abteilung"
+            ]
+          },
+          {
+            "label": "Ambivalenz",
+            "terms": [
+              "verlust",
+              "zaertlich*",
+              "gewalt",
+              "nicht",
+              "ambival*"
+            ]
+          }
+        ],
+        "refs": [
+          65,
+          66
+        ]
+      },
+      {
+        "id": "schluss-film",
+        "prompt": "Vergleiche Text und Film: Was siehst oder hörst du konkret? Was erfährst du im Text anders? Notiere eine Zeitmarke und eine Textstelle, bevor du die Wirkung deutest.",
+        "model": "Eine mögliche Antwort unterscheidet Beobachtung und Deutung: Im Film untersuche ich etwa eine Einstellung, eine Pause, einen Blick oder ein Geräusch und notiere die Zeitmarke. Daneben stelle ich eine konkrete Textstelle. Der Erzähler kann Gedanken benennen; der Film vermittelt Innenleben zum Beispiel durch Spiel, Montage oder Ton. Welche Wirkung entsteht, muss am gewählten Ausschnitt belegt werden. Andere textgestützte Vergleiche sind möglich.",
+        "criteria": [
+          {
+            "label": "Konkrete Filmbeobachtung",
+            "terms": [
+              "blick*",
+              "einstellung*",
+              "kamera*",
+              "ton",
+              "geraeusch*",
+              "pause*",
+              "stimme",
+              "musik",
+              "schnitt",
+              "montage"
+            ]
+          },
+          {
+            "label": "Textbeleg und Zeitmarke",
+            "terms": [
+              "textstelle",
+              "seite",
+              "zeitmarke",
+              "minute",
+              "beleg",
+              "erzaehler"
+            ]
+          },
+          {
+            "label": "Begründete Wirkung",
+            "terms": [
+              "wirkung",
+              "wirkt",
+              "dadurch",
+              "weil",
+              "vermittelt",
+              "naehe",
+              "distanz",
+              "unterschied"
+            ]
+          }
+        ],
+        "refs": [
+          60
+        ]
+      }
+    ]
+  }
+]
