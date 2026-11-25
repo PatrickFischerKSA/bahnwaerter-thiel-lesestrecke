@@ -98,12 +98,118 @@ export default function Investigation({
   );
   if (route === "fall")
     return (
-      <>
+      <article className="case-file">
+        <div className="file-register">
+          <span>AKTE THIEL / 1888</span>
+          <span>Literarische Ermittlung · Ausgang offen</span>
+          <span className="file-seal">Zurechnung ungeklärt</span>
+        </div>
         {heading(
           "Ermittlungsakte · Gerhart Hauptmann, 1888",
           "Charité oder Gefängnis?",
           "Zwei Tote in der Wohnung. Ein Mann auf den Gleisen. In seiner Hand die Mütze seines verstorbenen Sohnes.",
         )}
+        <section
+          className="institution-spread"
+          aria-label="Bildbelege zu Medizin und Strafvollzug"
+        >
+          <figure className="archive-photo charite-photo">
+            <a
+              href={`${BASE}/media/fall/charite-1850.jpg`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={`${BASE}/media/fall/charite-1850.jpg`}
+                alt="Historische Ansicht des Charité-Krankenhauses, 1850"
+              />
+            </a>
+            <figcaption>
+              <span className="exhibit-number">Beilage A / Medizin</span>
+              <h2>Charité, 1850</h2>
+              <p>
+                Die Novelle nennt die psychiatrische Abteilung der Charité als
+                Thiels letzten Aufenthaltsort. Die Gebäudeansicht zeigt die
+                Institution, nicht seine konkrete Station.
+              </p>
+              <small>
+                Anonyme Ansicht, 1850 · gemeinfrei ·{" "}
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:Charite.JPG"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Bildnachweis ↗
+                </a>
+              </small>
+            </figcaption>
+          </figure>
+          <figure className="archive-photo tegel-photo">
+            <a
+              href={`${BASE}/media/fall/tegel-torhaus.jpg`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={`${BASE}/media/fall/tegel-torhaus.jpg`}
+                alt="Historische Aufnahme des Torhauses des Strafgefängnisses Tegel"
+              />
+            </a>
+            <figcaption>
+              <span className="exhibit-number">Beilage B / Strafvollzug</span>
+              <h2>Das Tor von Tegel</h2>
+              <p>
+                Historische Torhausansicht, in der Chronik dem frühen 20.
+                Jahrhundert zugeordnet. Tegel wurde 1898 eröffnet – zehn Jahre
+                nach der Novelle. Hier dient es als Vergleichsbild des
+                Strafvollzugs, nicht als belegter Haftort Thiels.
+              </p>
+              <small>
+                Bild: JVA Tegel ·{" "}
+                <a
+                  href="https://www.berlin.de/justizvollzug/anstalten/jva-tegel/die-anstalt/historie/artikel.1090675.php"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Bildnachweis und Anstaltsgeschichte ↗
+                </a>
+              </small>
+            </figcaption>
+          </figure>
+          <aside className="file-margin">
+            <span>Aktenvermerk</span>
+            <p>
+              Der Text nennt ein Berliner Untersuchungsgefängnis, aber keinen
+              Namen. Untersuchungshaft, Strafvollzug und psychiatrische
+              Unterbringung sind unterschiedliche Vorgänge.
+            </p>
+          </aside>
+        </section>
+        <section className="screening-note" aria-label="Serienfolge Charité">
+          <span className="exhibit-number">
+            Beilage C / Filmische Rekonstruktion
+          </span>
+          <div>
+            <h2>Charité · Barmherzigkeit</h2>
+            <p>
+              Staffel 1, Folge 1. Eine zusätzliche Perspektive auf Krankenhaus,
+              medizinische Autorität und soziale Hierarchien. Die historische
+              Serie ist eine spätere Inszenierung, kein Dokument über Thiel.
+            </p>
+            <a
+              className="episode-link"
+              href="https://www.dropbox.com/scl/fi/e42zk5vr0iicc291ebj8v/Folge-1-Barmherzigkeit-S01E01.mp4?rlkey=etck8r642javgz2habtl2lc5e&amp;st=ffzyn1yi&amp;dl=0"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ▶ Erste Folge ansehen: „Barmherzigkeit“ ↗
+            </a>
+          </div>
+        </section>
+        <div className="evidence-divider">
+          <span>Filmprotokoll / Drei Befunde am Ende</span>
+          <span>DEFA · 1982</span>
+        </div>
         <section
           className="film-exhibits"
           aria-label="Drei Filmspuren zum Ausgang des Falls"
@@ -304,7 +410,7 @@ export default function Investigation({
         <button className="primary" onClick={() => go("kontext")}>
           Zeit und Institutionen →
         </button>
-      </>
+      </article>
     );
   if (route === "kontext")
     return (

@@ -808,3 +808,184 @@ figure {
     grid-template-columns: 1fr;
   }
 }
+
+/* The case opens as a dossier spread, with numbered exhibits and marginal notes. */
+.case-file {
+  --file-red: #8e3c2c;
+  padding: 0 0 2rem;
+}
+.file-register {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  border-top: 3px double #9a8b70;
+  border-bottom: 1px solid #9a8b70;
+  padding: 0.8rem 0;
+  font:
+    0.72rem/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.file-seal {
+  margin-left: auto;
+  color: var(--file-red);
+  border: 2px solid currentColor;
+  padding: 0.2rem 0.5rem;
+  transform: rotate(-3deg);
+}
+.case-file .chapter-heading {
+  padding-top: 2rem;
+}
+.institution-spread {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem 3rem;
+  margin: 3rem 0;
+  align-items: start;
+}
+.archive-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 9px solid #fffdf5;
+  box-shadow: 2px 5px 12px #382d211f;
+}
+.charite-photo img {
+  transform: rotate(-1deg);
+}
+.tegel-photo {
+  margin-top: 4rem;
+}
+.tegel-photo img {
+  transform: rotate(1deg);
+}
+.archive-photo figcaption {
+  padding: 1.5rem 0.5rem 0;
+}
+.archive-photo h2 {
+  margin: 0.5rem 0;
+}
+.archive-photo p {
+  font-size: 1rem;
+}
+.archive-photo small {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.exhibit-number,
+.file-margin > span,
+.evidence-divider {
+  font:
+    0.75rem/1.6 ui-monospace,
+    monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--file-red);
+}
+.file-margin {
+  grid-column: 1/-1;
+  max-width: 48rem;
+  padding: 0.5rem 0 0.5rem 1.4rem;
+  border-left: 2px solid var(--file-red);
+}
+.file-margin p {
+  margin: 0.4rem 0 0;
+  font:
+    italic 1.05rem/1.7 Georgia,
+    serif;
+}
+.screening-note {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-block: 1px solid #b7ac95;
+  margin: 3rem 0;
+}
+.screening-note h2 {
+  margin: 0 0 0.8rem;
+}
+.episode-link {
+  display: inline-block;
+  color: var(--file-red);
+  font-weight: 700;
+}
+.evidence-divider {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+.case-file .film-exhibits {
+  display: block;
+  margin: 1rem 0 3rem;
+}
+.case-file .film-exhibit {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+  padding: 2rem 0;
+  border-bottom: 1px solid #c9c0ad;
+}
+.case-file .film-exhibit:nth-child(2) video {
+  order: 2;
+}
+.case-file .film-exhibit figcaption {
+  padding: 0.5rem 0;
+}
+.case-file .film-exhibit video {
+  box-shadow: 3px 5px 13px #382d2126;
+}
+.case-file .film-source {
+  margin-top: 1.3rem;
+}
+.case-file .case-opening {
+  background: transparent;
+  color: var(--ink);
+  border: 0;
+  border-radius: 0;
+  padding: 2rem 0;
+}
+.case-file .case-opening .case-stamp {
+  color: var(--file-red);
+}
+.case-file .panel {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-top: 1px solid #b7ac95;
+  box-shadow: none;
+}
+.case-file .padded {
+  padding: 2rem 0;
+}
+.case-file .case-columns {
+  gap: 3rem;
+}
+@media (max-width: 700px) {
+  .institution-spread,
+  .screening-note,
+  .case-file .film-exhibit {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .tegel-photo {
+    margin-top: 0;
+  }
+  .case-file .film-exhibit:nth-child(2) video {
+    order: 0;
+  }
+  .file-seal {
+    margin-left: 0;
+  }
+  .institution-spread {
+    margin: 2rem 0;
+  }
+}
