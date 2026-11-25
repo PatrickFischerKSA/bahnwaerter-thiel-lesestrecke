@@ -757,3 +757,54 @@ figure {
     border-bottom: 1px solid var(--line);
   }
 }
+
+/* Original film excerpts in the investigation opening. */
+.film-exhibits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+.film-exhibit {
+  margin: 0;
+  border: 1px solid #cbd2c6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fffdf6;
+}
+.film-exhibit video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #142620;
+  object-fit: contain;
+}
+.film-exhibit figcaption {
+  padding: 1.1rem;
+}
+.film-exhibit h2 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+}
+.film-exhibit p {
+  font-size: 1rem;
+}
+.film-exhibit .eyebrow {
+  font-size: 0.75rem;
+}
+.film-exhibit a {
+  font-size: 0.85rem;
+}
+.film-source {
+  grid-column: 1/-1;
+  font-size: 0.9rem;
+  margin: 0;
+}
+.case-opening {
+  grid-template-columns: 1fr;
+}
+@media (max-width: 850px) {
+  .film-exhibits {
+    grid-template-columns: 1fr;
+  }
+}

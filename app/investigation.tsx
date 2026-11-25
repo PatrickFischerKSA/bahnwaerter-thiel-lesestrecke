@@ -104,6 +104,87 @@ export default function Investigation({
           "Charité oder Gefängnis?",
           "Zwei Tote in der Wohnung. Ein Mann auf den Gleisen. In seiner Hand die Mütze seines verstorbenen Sohnes.",
         )}
+        <section
+          className="film-exhibits"
+          aria-label="Drei Filmspuren zum Ausgang des Falls"
+        >
+          {[
+            {
+              id: "wohnung",
+              title: "Die Wohnung",
+              time: "65:55–66:08 · 13 Sekunden",
+              caption:
+                "Die Kamera erschliesst den verwüsteten Raum und zeigt Lene auf dem Sofa.",
+              alt: "Lene liegt reglos auf dem Sofa in der verwüsteten Wohnung.",
+            },
+            {
+              id: "gleise",
+              title: "Thiel an den Gleisen",
+              time: "67:14–67:28 · 14 Sekunden",
+              caption:
+                "Thiel sitzt vor der Lokomotive und hält die Mütze seines Sohnes in den Händen.",
+              alt: "Thiel sitzt an den Gleisen und hält Tobias’ Mütze.",
+            },
+            {
+              id: "anstalt",
+              title: "In der Anstalt",
+              time: "69:08–69:24 · 16 Sekunden",
+              caption:
+                "Thiels Bewegungen und die Beobachtung durch das Personal bilden den Schluss der Filmhandlung.",
+              alt: "Thiel steht in einem kargen Anstaltszimmer, einen Arm über dem Kopf.",
+            },
+          ].map((clip, index) => (
+            <figure className="film-exhibit" key={clip.id}>
+              <video
+                controls
+                playsInline
+                preload="none"
+                poster={`${BASE}/media/fall/${clip.id}.jpg`}
+                aria-label={`Filmspur ${index + 1}: ${clip.title}`}
+                onPlay={(event) => {
+                  const current = event.currentTarget;
+                  current
+                    .closest(".film-exhibits")
+                    ?.querySelectorAll("video")
+                    .forEach((video) => {
+                      if (video !== current) video.pause();
+                    });
+                }}
+              >
+                <source
+                  src={`${BASE}/media/fall/${clip.id}.mp4`}
+                  type="video/mp4"
+                />
+                Dein Browser unterstützt die Videowiedergabe nicht.
+              </video>
+              <figcaption>
+                <p className="eyebrow">
+                  Filmspur {index + 1} · {clip.time}
+                </p>
+                <h2>{clip.title}</h2>
+                <p>{clip.caption}</p>
+                <a
+                  href={`${BASE}/media/fall/${clip.id}.jpg`}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Standbild öffnen: ${clip.alt}`}
+                >
+                  Standbild öffnen ↗
+                </a>
+                {" · "}
+                <a href={`${BASE}/media/fall/${clip.id}.mp4`}>
+                  Clip separat öffnen ↗
+                </a>
+              </figcaption>
+            </figure>
+          ))}
+          <p className="film-source">
+            Bahnwärter Thiel · DEFA, 1982. Zeitangaben beziehen sich auf die
+            bereitgestellte Filmfassung. Die Bilder zeigen die filmische
+            Interpretation; sie ersetzen keinen Textbeleg und kein Gutachten
+            über Thiels Zustand zur Tatzeit.
+          </p>
+        </section>
         <div className="case-opening">
           <div>
             <p className="case-stamp">Ausgangspunkt: der Schluss</p>
@@ -133,16 +214,6 @@ export default function Investigation({
               </button>
             </div>
           </div>
-          <figure>
-            <img
-              src={`${BASE}/media/schluss.jpg`}
-              alt="Standbild aus der Schlusssequenz der DEFA-Verfilmung"
-            />
-            <figcaption>
-              DEFA-Fassung, 1982 · Filmische Interpretation, keine historische
-              Tatortaufnahme.
-            </figcaption>
-          </figure>
         </div>
         <section className="panel padded">
           <p className="eyebrow">Originalbefund · Textseite 66</p>

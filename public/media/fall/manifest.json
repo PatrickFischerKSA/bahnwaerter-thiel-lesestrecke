@@ -1,0 +1,25 @@
+{
+  "source": "Bahnwärter Thiel, DEFA 1982; bereitgestellte Filmfassung, 72:20",
+  "timebase": "seconds from source beginning",
+  "speed": 1,
+  "clips": [
+    {
+      "id": "wohnung",
+      "start": 3955,
+      "end": 3968,
+      "poster": 3965
+    },
+    {
+      "id": "gleise",
+      "start": 4034,
+      "end": 4048,
+      "poster": 4035
+    },
+    {
+      "id": "anstalt",
+      "start": 4148,
+      "end": 4164,
+      "poster": 4149
+    }
+  ]
+}
