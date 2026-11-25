@@ -144,34 +144,45 @@ export default function Investigation({
               </small>
             </figcaption>
           </figure>
-          <figure className="archive-photo tegel-photo">
+          <figure className="archive-photo moabit-photo">
             <a
-              href={`${BASE}/media/fall/tegel-torhaus.jpg`}
+              href={`${BASE}/media/fall/moabit-1882.png`}
               target="_blank"
               rel="noreferrer"
             >
               <img
-                src={`${BASE}/media/fall/tegel-torhaus.jpg`}
-                alt="Historische Aufnahme des Torhauses des Strafgefängnisses Tegel"
+                src={`${BASE}/media/fall/moabit-1882.png`}
+                alt="Federzeichnung des Kriminalgerichtsgebäudes in Berlin-Moabit, 1882; das Untersuchungsgefängnis liegt dahinter"
               />
             </a>
             <figcaption>
-              <span className="exhibit-number">Beilage B / Strafvollzug</span>
-              <h2>Das Tor von Tegel</h2>
+              <span className="exhibit-number">
+                Beilage B / Untersuchungshaft
+              </span>
+              <h2>Moabit, 1882</h2>
               <p>
-                Historische Torhausansicht, in der Chronik dem frühen 20.
-                Jahrhundert zugeordnet. Tegel wurde 1898 eröffnet – zehn Jahre
-                nach der Novelle. Hier dient es als Vergleichsbild des
-                Strafvollzugs, nicht als belegter Haftort Thiels.
+                Die Federzeichnung zeigt das Kriminalgerichtsgebäude; dahinter
+                liegt das Untersuchungsgefängnis. Der Komplex wurde 1877–1881
+                gebaut und 1881 belegt, bestand also bereits bei Erscheinen der
+                Novelle 1888. Moabit veranschaulicht den zeitgenössischen
+                Haftort, ist aber nicht als Thiels Gefängnis belegt.
               </p>
               <small>
-                Bild: JVA Tegel ·{" "}
+                Anonyme Federzeichnung, 1882 · gemeinfrei ·{" "}
                 <a
-                  href="https://www.berlin.de/justizvollzug/anstalten/jva-tegel/die-anstalt/historie/artikel.1090675.php"
+                  href="https://commons.wikimedia.org/wiki/File:Berlin-Moabit-Kriminalgericht-1882.png"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Bildnachweis und Anstaltsgeschichte ↗
+                  Bildnachweis ↗
+                </a>
+                {" · "}
+                <a
+                  href="https://www.berlin.de/justizvollzug/anstalten/jva-moabit/die-anstalt/historie/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Anstaltsgeschichte ↗
                 </a>
               </small>
             </figcaption>

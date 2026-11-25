@@ -855,10 +855,10 @@ figure {
 .charite-photo img {
   transform: rotate(-1deg);
 }
-.tegel-photo {
+.moabit-photo {
   margin-top: 4rem;
 }
-.tegel-photo img {
+.moabit-photo img {
   transform: rotate(1deg);
 }
 .archive-photo figcaption {
@@ -976,7 +976,7 @@ figure {
     grid-template-columns: 1fr;
     gap: 1.2rem;
   }
-  .tegel-photo {
+  .moabit-photo {
     margin-top: 0;
   }
   .case-file .film-exhibit:nth-child(2) video {
