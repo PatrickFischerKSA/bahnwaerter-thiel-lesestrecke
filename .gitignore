@@ -43,3 +43,6 @@ next-env.d.ts
 
 # TypeScript build cache
 *.tsbuildinfo
+
+# Local Worker state and media test databases
+**/.wrangler/

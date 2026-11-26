@@ -4,6 +4,7 @@ import AnswerSupport from "./answer-support";
 import { questionAngle } from "./solution-perspectives";
 import chapters from "./chapters.json";
 import pages from "./text.json";
+import VideoPleas from "./video-pleas";
 import Trial from "./trial";
 import Investigation from "./investigation";
 import { stations } from "./legacy-data";
@@ -341,6 +342,7 @@ export default function Home() {
               </a>
             ))}
             <h2>05 · Das Urteil</h2>
+            <a href="#plaedoyers" aria-current={route.startsWith("plaedoyers") ? "page" : undefined}>Video-Plädoyers und Klassen-Votum</a>
             <a href="#prozess/urteil" aria-current={route === "prozess/urteil" ? "page" : undefined}>Urteilsberatung und Verkündung</a>
             <a href="#bericht">Ermittlungsbericht</a>
             <a
@@ -367,7 +369,7 @@ export default function Home() {
               {notice}
             </p>
           )}
-          {route.startsWith("prozess/") ? <Trial key={route} route={route} answers={answers} update={update} /> : ["fall", "kontext", "spuren", "bericht", "material", "quellen"].includes(
+          {route.startsWith("plaedoyers") ? <VideoPleas route={route} /> : route.startsWith("prozess/") ? <Trial key={route} route={route} answers={answers} update={update} /> : ["fall", "kontext", "spuren", "bericht", "material", "quellen"].includes(
             route,
           ) ||
           route.startsWith("material/") ||

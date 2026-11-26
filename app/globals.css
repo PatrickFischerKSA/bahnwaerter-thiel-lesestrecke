@@ -1063,3 +1063,9 @@ figure {
 .answer-support li + li { margin-top: .65rem; }
 .answer-support .feedback { padding: .7rem 1rem; }
 .answer-support button { text-align: left; }
+.plea-video { display: block; width: 100%; max-width: 52rem; max-height: 65vh; background: #14251f; margin: 1rem 0; }
+.plea-video[hidden] { display: none; }
+.plea-index > div { padding: .8rem 0; border-bottom: 1px solid #c4cabc; }
+.plea-index button { text-align: left; }
+.video-pleas input { max-width: 100%; }
+.video-pleas meter { margin-left: 1rem; width: min(16rem,45vw); }
