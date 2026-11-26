@@ -1083,3 +1083,6 @@ figure {
 .student-steps .step-number { font-variant-numeric: tabular-nums; }
 .student-steps .step-current { color: #8b3d29; font-size: .85em; }
 .student-steps [aria-current="step"] > details > summary { color: #193e31; }
+
+.station-next { margin: 2rem 0; padding-top: 1.25rem; border-top: 1px solid #c7cec1; }
+.station-next button { max-width: 100%; white-space: normal; text-align: left; }

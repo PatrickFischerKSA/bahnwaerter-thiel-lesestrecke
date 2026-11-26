@@ -481,6 +481,7 @@ export default function Investigation({
         </button>
         </details>
         </div>
+        <nav className="station-next" aria-label="Nächster Ermittlungsschritt">{entryStep < 4 ? <button className="primary" onClick={()=>changeEntryStep(entryStep+1)}>Weiter: {entrySteps[entryStep+1]} →</button> : <button className="primary" onClick={()=>go("kontext")}>Weiter: Zeit, Recht und Psychiatrie →</button>}</nav>
         <p className="entry-footnote">Alle Abschnitte sind frei anwählbar. Notizen bleiben beim Wechsel erhalten.</p>
       </article>
     );

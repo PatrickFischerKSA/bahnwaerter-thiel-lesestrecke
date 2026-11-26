@@ -14,6 +14,23 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const FILM =
   "https://www.dropbox.com/scl/fi/qk4hy2y67dtb4k4fht0qi/Bahnwaerter-Thiel-DEFA-1982.mp4?rlkey=081ob7k97ko7pyfq1gtm1xm4c&raw=1";
 const KEY = "bahnwaerter-lesestrecke:v2";
+const investigationPath = [
+  {route:"kontext", title:"Zeit, Recht und Psychiatrie"},
+  ...chapters.map(c=>({route:"lesen/"+c.id,title:c.title})),
+  {route:"prozess/vorbereitung",title:"Die Verfahrensbeteiligten"},
+  {route:"material",title:"Dossiers und Theorie-Videos"},
+  {route:"quellen",title:"Historische Quellen"},
+  {route:"spuren",title:"Spurenregister"},
+  {route:"prozess/verhandlung",title:"Beweisaufnahme und Plädoyers"},
+  ...stations.map(s=>({route:"vertiefung/"+s.id,title:s.title})),
+  {route:"plaedoyers",title:"Schlussplädoyers aufnehmen und sichten"},
+  {route:"prozess/urteil",title:"Urteilsberatung und Verkündung"},
+  {route:"bericht",title:"Ermittlungsbericht"},
+  {route:"grundlagen",title:"Begriffsregister"},
+  {route:"journal",title:"Notizen sichern"},
+  {route:"plaedoyers/abstimmung",title:"Abschliessende Abstimmung"}
+];
+
 type Question = (typeof chapters)[number]["questions"][number];
 const time = (n: number) =>
   `${Math.floor(n / 60)
@@ -193,6 +210,9 @@ export default function Home() {
     chapters.findIndex((c) => "lesen/" + c.id === route),
   );
   const chapter = chapters[index];
+  const pathIndex = investigationPath.findIndex(s=>s.route===route.split("?")[0]);
+  const nextStation = pathIndex >= 0 ? investigationPath[pathIndex+1] : route.startsWith("material/") || route.startsWith("theorie/") ? {route:"material",title:"Zurück zur Materialakte"} : undefined;
+
   const isReading = route.startsWith("lesen/");
   const station = stations.find((s) => "vertiefung/" + s.id === route);
   useEffect(() => {
@@ -628,18 +648,7 @@ export default function Home() {
                 ) : (
                   <span />
                 )}
-                {index < 7 ? (
-                  <button
-                    className="primary"
-                    onClick={() => go("lesen/" + chapters[index + 1].id)}
-                  >
-                    Weiter: {chapters[index + 1].title} →
-                  </button>
-                ) : (
-                  <button className="primary" onClick={() => go("prozess/vorbereitung")}>
-                    Rollen verteilen und Prozess vorbereiten →
-                  </button>
-                )}
+
               </div>
               {sourceNotes}
             </>
@@ -714,21 +723,7 @@ export default function Home() {
                 <button onClick={() => go("lesen/anfang")}>
                   Zum Text und Film
                 </button>
-                <button
-                  className="primary"
-                  onClick={() =>
-                    go(
-                      station.id === "deutung"
-                        ? "prozess/verhandlung"
-                        : "vertiefung/" +
-                            stations[stations.indexOf(station) + 1].id,
-                    )
-                  }
-                >
-                  {station.id === "deutung"
-                    ? "Einwände in die Verhandlung einbringen"
-                    : "Nächste Vertiefung →"}
-                </button>
+
               </div>
               {station.id === "deutung" && (
                 <section className="panel padded">
@@ -942,6 +937,7 @@ export default function Home() {
               <a href="#lesen/anfang">Mit Text und Film beginnen →</a>
             </section>
           )}
+          {nextStation && <nav className="station-next" aria-label="Nächste Station"><button className="primary" onClick={()=>go(nextStation.route)}>Weiter: {nextStation.title} →</button></nav>}
           <footer>
             Gerhart Hauptmann · Bahnwärter Thiel
             <br />
