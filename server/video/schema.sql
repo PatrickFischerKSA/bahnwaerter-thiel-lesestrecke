@@ -9,3 +9,5 @@ CREATE INDEX IF NOT EXISTS participants_room ON participants(room);
 CREATE INDEX IF NOT EXISTS votes_room ON votes(room);
 
 CREATE TABLE IF NOT EXISTS confirmations (id TEXT PRIMARY KEY, note TEXT NOT NULL, created INTEGER NOT NULL);
+
+CREATE TABLE IF NOT EXISTS invitation_vault (participant TEXT PRIMARY KEY REFERENCES participants(id) ON DELETE CASCADE, encrypted TEXT NOT NULL, assigned TEXT NOT NULL DEFAULT '');

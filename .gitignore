@@ -46,3 +46,5 @@ next-env.d.ts
 
 # Local Worker state and media test databases
 **/.wrangler/
+
+**/.dev.vars*

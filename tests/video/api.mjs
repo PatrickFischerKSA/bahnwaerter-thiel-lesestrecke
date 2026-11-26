@@ -1,10 +1,16 @@
 import assert from 'node:assert/strict';
-const BASE=process.env.VIDEO_API||'http://127.0.0.1:8791';
+const BASE=process.env.VIDEO_API||'http://127.0.0.1:8792';
 async function call(path,method='GET',data,key,raw){const r=await fetch(BASE+path,{method,headers:{Origin:'https://patrickfischerksa.github.io',...(key?{Authorization:'Bearer '+key}:{}),...(data?{'Content-Type':'application/json'}:{})},body:raw|| (data?JSON.stringify(data):undefined)});return{status:r.status,data:await r.json()};}
 const bytes=new Uint8Array(1000);bytes.set([0x1a,0x45,0xdf,0xa3]);
 let room;
+const login=await call("/teacher/login","POST",{password:process.env.TEACHER_TEST_PASSWORD||"Thiel-Testzugang-2026"});assert.equal(login.status,200);const teacher=login.data.key;
+assert.equal((await call("/rooms","POST",{count:1})).status,401);
 try {
- const c=await call('/rooms','POST',{title:'Automatischer Funktionstest',count:2});assert.equal(c.status,201,JSON.stringify(c));room=c.data;const root='/rooms/'+room.id;const a=room.invites[0],b=room.invites[1];
+ const c=await call('/rooms','POST',{title:'Automatischer Funktionstest',count:2},teacher);assert.equal(c.status,201,JSON.stringify(c));room=c.data;const root='/rooms/'+room.id;const a=room.invites[0],b=room.invites[1];
+ const roster=await call(root+'/invites','GET',null,teacher);assert.equal(roster.data.invites.length,2);assert.equal(roster.data.invites[0].key,a.key);assert.equal((await call(root+'/invites','GET',null,a.key)).status,403);
+ assert.equal((await call(root+'/invites/'+a.id,'PUT',{assigned:'Privates Testkürzel'},teacher)).status,200);
+ assert.ok(!JSON.stringify((await call(root,'GET',null,b.key)).data).includes('Privates Testkürzel'));
+ assert.ok((await call('/teacher/rooms','GET',null,teacher)).data.rooms.some(r=>r.id===room.id));
  assert.equal((await call(root)).status,401);
  assert.equal((await call(root,'GET',null,b.key)).data.person.id,b.id);
  assert.equal((await call(root+'/phase','POST',{phase:'view'},a.key)).status,403);
@@ -30,4 +36,4 @@ try {
  const final=await call(root,'GET',null,a.key);assert.deepEqual(final.data.result,[{choice:'Gefängnis',n:1}]);
  assert.equal((await call(root+'/vote','POST',{choice:'Psychiatrie',reason:'Zu spät eingereichte Stimme im Test.'},b.key)).status,403);
  console.log('PASS: room isolation, uploads, private media ranges, moderation, viewing requirement, single vote/update, hidden results and closed vote');
-} finally {if(room){assert.equal((await call('/rooms/'+room.id,'DELETE',null,room.key)).status,200);assert.equal((await call('/rooms/'+room.id,'GET',null,room.key)).status,404);console.log('PASS: test room and all video data deleted');}}
+} finally {if(room){assert.equal((await call('/rooms/'+room.id,'DELETE',null,room.key)).status,200);assert.equal((await call('/rooms/'+room.id,'GET',null,room.key)).status,404);await call('/teacher/forget-room','POST',{id:room.id},teacher);await call('/teacher/logout','POST',{},teacher);assert.equal((await call('/teacher/rooms','GET',null,teacher)).status,401);console.log('PASS: test room deleted and session revoked');}}

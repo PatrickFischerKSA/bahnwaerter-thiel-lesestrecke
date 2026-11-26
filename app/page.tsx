@@ -4,6 +4,7 @@ import AnswerSupport from "./answer-support";
 import { questionAngle } from "./solution-perspectives";
 import chapters from "./chapters.json";
 import pages from "./text.json";
+import TeacherArea from "./teacher-area";
 import VideoPleas from "./video-pleas";
 import Trial from "./trial";
 import Investigation from "./investigation";
@@ -295,7 +296,7 @@ export default function Home() {
           Bahnwärter <em>Thiel</em>
           <span>Gerhart Hauptmann · 1888 / DEFA · 1982</span>
         </a>
-        <a href="#journal">Arbeitsakte ↗</a>
+        <div className="source-jumps"><a href="#journal">Arbeitsakte ↗</a><a href="#lehrer">Lehrerbereich</a></div>
       </header>
       <div className="layout">
         <aside className="sidebar">
@@ -342,6 +343,7 @@ export default function Home() {
               </a>
             ))}
             <h2>05 · Das Urteil</h2>
+            <a href="#lehrer" aria-current={route === "lehrer" ? "page" : undefined}>Lehrerbereich · Klassenräume</a>
             <a href="#plaedoyers" aria-current={route.startsWith("plaedoyers") ? "page" : undefined}>Video-Plädoyers und Klassen-Votum</a>
             <a href="#prozess/urteil" aria-current={route === "prozess/urteil" ? "page" : undefined}>Urteilsberatung und Verkündung</a>
             <a href="#bericht">Ermittlungsbericht</a>
@@ -369,7 +371,7 @@ export default function Home() {
               {notice}
             </p>
           )}
-          {route.startsWith("plaedoyers") ? <VideoPleas route={route} /> : route.startsWith("prozess/") ? <Trial key={route} route={route} answers={answers} update={update} /> : ["fall", "kontext", "spuren", "bericht", "material", "quellen"].includes(
+          {route === "lehrer" ? <TeacherArea /> : route.startsWith("plaedoyers") ? <VideoPleas route={route} /> : route.startsWith("prozess/") ? <Trial key={route} route={route} answers={answers} update={update} /> : ["fall", "kontext", "spuren", "bericht", "material", "quellen"].includes(
             route,
           ) ||
           route.startsWith("material/") ||

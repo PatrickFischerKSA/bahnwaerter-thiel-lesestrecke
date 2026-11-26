@@ -5,8 +5,10 @@ unter https://thiel-plaedoyers.patrick-fischer.workers.dev.
 
 ## Unterrichtsablauf
 
-1. Unter **Das Urteil → Video-Plädoyers und Klassen-Votum** einen Klassenraum
-   anlegen. Anzahl der Teilnahmelinks wählen, Leitungslink und Links herunterladen.
+1. Über **Lehrerbereich** (`#lehrer`) mit dem Lehrerpasswort anmelden.
+   Bestehenden Klassenraum auswählen oder einen weiteren Raum anlegen.
+   Unter **Teilnahmelinks** private Namen/Kürzel zuordnen, einzelne Links kopieren
+   oder die vollständige Zuordnungsliste als CSV sichern.
 2. Pro Person genau einen persönlichen Link verteilen. Personen brauchen kein
    zusätzliches Konto. Der Besitz des Links berechtigt zur jeweiligen Rolle.
 3. Plädoyer aufnehmen oder als Datei auswählen: 2–3 Minuten, MP4/WebM/MOV,
@@ -35,9 +37,20 @@ Unterrichtsmaterial und schriftliche Prozessakte sind unabhängig davon frei zug
 - Dateien liegen im separaten, nicht öffentlich freigegebenen R2-Bucket
   `thiel-plaedoyers-videos`. Abruf ausschliesslich über die authentifizierende API,
   einschliesslich HTTP-Range für Videowiedergabe.
-- Leitungs- und Teilnahmeschlüssel: zwei kryptografisch zufällige UUIDs, serverseitig nur SHA-256.
-  Vollständige Links beim Anlegen sichern: sie können aus der Datenbank nicht
-  rekonstruiert werden. Keine Namen erforderlich; automatische Beitragskürzel.
+- Leitungs- und Teilnahmeschlüssel werden zur Authentifizierung als SHA-256 gespeichert.
+  Teilnahmelinks liegen zusätzlich AES-256-GCM-verschlüsselt im Raum, damit die
+  angemeldete Lehrperson sie erneut abrufen kann. Der separate Schlüssel `VAULT_KEY`
+  liegt als Worker-Secret vor. Private Zuordnungen erscheinen nicht in der Schüleransicht.
+- Passwortprüfung serverseitig (PBKDF2-SHA256, 100000 Iterationen, zufälliges Salt),
+  fünf Anmeldeversuche pro Minute/IP. Sitzungen gelten acht Stunden und liegen
+  gehasht in einem separaten TeacherDesk-Durable-Object. Der Browser hält seinen
+  Sitzungsschlüssel nur in sessionStorage. Abmelden widerruft die Sitzung; ein
+  Passwortwechsel beendet alle bisherigen Sitzungen.
+- Nur die Lehreranmeldung darf neue Räume erstellen. Jeder Zugriff auf Linklisten,
+  Freigabe und Abstimmung wird auf dem Server geprüft. Alte private Leitungslinks
+  bleiben gültig; ältere Räume lassen sich mit ihrem Leitungslink zuordnen.
+  Alte Teilnahmeschlüssel können nur mit den ursprünglich gesicherten Links
+  in den verschlüsselten Bestand übernommen werden.
 - Die persönliche Stimme gehört zum Link, nicht zu einer überprüften Identität.
   Geteilte Links sind keine zusätzlichen Personen. Nur einen Link pro Person vergeben.
 - Metadaten: Titel, Empfehlung, Quellenbezüge, Einwand, Dauer, Dateigrösse,
@@ -64,7 +77,7 @@ Konfiguration: `server/video/wrangler.jsonc`; Schema: `schema.sql`.
 Schemaänderungen vorhandene Räume berücksichtigen und additive Migrationen schreiben.
 
 ```sh
-npx wrangler dev --config server/video/wrangler.jsonc --port 8791
+npx wrangler dev --config server/video/wrangler.jsonc --port 8792
 node tests/video/api.mjs
 npx wrangler deploy --config server/video/wrangler.jsonc
 ```
@@ -80,3 +93,19 @@ ersetzt werden. Keine Zugangsschlüssel in Quelltext, Git oder Build-Variablen e
 Cloudflare-Referenzen:
 - https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/
 - https://developers.cloudflare.com/r2/api/workers/workers-api-reference/
+
+## Lehrerbereich einrichten
+
+Vor dem Deploy `TEACHER_PASSWORD_HASH` und `VAULT_KEY` als Cloudflare-Secrets
+hinterlegen (`wrangler secret bulk` mit einer geschützten lokalen JSON-Datei).
+`passwordHash` aus `teacher.mjs` erzeugt das Passwortformat; `VAULT_KEY` besteht
+aus 32 kryptografisch zufälligen Bytes als Hexstring. Niemals im Repository ablegen.
+Für lokale Tests entsprechende Werte in `server/video/.dev.vars` setzen; der
+Test erwartet `Thiel-Testzugang-2026` oder `TEACHER_TEST_PASSWORD`.
+
+Im Lehrerbereich: **Videofreigabe** → Beitrag öffnen, ansehen, für die Klasse
+freigeben. Danach **Abstimmung** → Einreichung beenden / Sichtung eröffnen →
+bei Bedarf gemeinsame Sichtung dokumentieren → Abstimmung eröffnen →
+Abstimmung schliessen / Ergebnis zeigen. Es werden keine Nachrichten automatisch
+verschickt. Einzelne Links sind für persönliche Nachrichten bestimmt, die CSV nur
+für die Lehrperson.

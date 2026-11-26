@@ -1069,3 +1069,8 @@ figure {
 .plea-index button { text-align: left; }
 .video-pleas input { max-width: 100%; }
 .video-pleas meter { margin-left: 1rem; width: min(16rem,45vw); }
+.teacher-link-list { padding: 0; list-style: none; }
+.teacher-link-list > li { padding: 1rem 0; border-bottom: 1px solid #c4cabc; }
+.teacher-link-list input, .teacher-area input, .teacher-area select { max-width: 100%; }
+.teacher-link-list input[readonly] { width: 100%; }
+.source-jumps button[aria-pressed="true"] { font-weight: 750; border-bottom: 3px solid #17392e; }
