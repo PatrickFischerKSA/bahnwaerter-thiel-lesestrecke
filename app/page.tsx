@@ -212,6 +212,18 @@ export default function Home() {
   const chapter = chapters[index];
   const pathIndex = investigationPath.findIndex(s=>s.route===route.split("?")[0]);
   const nextStation = pathIndex >= 0 ? investigationPath[pathIndex+1] : route.startsWith("material/") || route.startsWith("theorie/") ? {route:"material",title:"Zurück zur Materialakte"} : undefined;
+  const openingTitles = ["Zwei Tote. Ein Überlebender.", "Spuren sichern", "Strafe oder Behandlung?", "Die Welt von 1888", "Wie konnte es dazu kommen?"];
+  const openingStep = Math.max(0, Math.min(4, Number(answers["case:entry-step"]) || 0));
+  const inOpening = route === "fall";
+  const previousStation = pathIndex > 0 ? investigationPath[pathIndex-1] : pathIndex === 0 ? {route:"fall",title:openingTitles[4]} : undefined;
+  const orientationTitle = inOpening ? openingTitles[openingStep] : pathIndex >= 0 ? investigationPath[pathIndex].title : route.startsWith("material/") ? "Dossier der Materialakte" : route.startsWith("theorie/") ? "Theorie zur Materialakte" : "";
+  const followingTitle = inOpening ? openingTitles[openingStep+1] || investigationPath[0].title : nextStation?.title;
+  function backStation() {
+    if(inOpening && openingStep > 0) { document.querySelectorAll<HTMLVideoElement>(".entry-reader video").forEach(v=>v.pause()); update("case:entry-step",String(openingStep-1)); main.current?.scrollIntoView({block:"start"}); }
+    else if(previousStation) { if(previousStation.route==="fall") update("case:entry-step","4"); go(previousStation.route); }
+    else if(nextStation?.route==="material") go("material");
+  }
+
 
   const isReading = route.startsWith("lesen/");
   const station = stations.find((s) => "vertiefung/" + s.id === route);
@@ -404,6 +416,7 @@ export default function Home() {
               {notice}
             </p>
           )}
+          {orientationTitle && <nav className="investigation-position" aria-label="Stand im Ermittlungsablauf"><p className="small">{inOpening ? `Station ${openingStep+1}` : pathIndex >= 0 ? `Station ${pathIndex+6}` : "Beilage"}{(inOpening || pathIndex >= 0) && ` von ${investigationPath.length+5}`} · <strong>{orientationTitle}</strong></p><p>{followingTitle ? <>Als Nächstes: {followingTitle}</> : "Letzte Station: Abstimmung und Ergebnisvergleich."}</p>{(inOpening ? openingStep>0 : !!previousStation || nextStation?.route==="material") && <button onClick={backStation}>← Zurück: {inOpening ? openingTitles[openingStep-1] : previousStation?.title || "Materialakte"}</button>}</nav>}
           {route === "lehrer" ? <TeacherArea /> : route.startsWith("plaedoyers") ? <VideoPleas route={route} /> : route.startsWith("prozess/") ? <Trial key={route} route={route} answers={answers} update={update} /> : ["fall", "kontext", "spuren", "bericht", "material", "quellen"].includes(
             route,
           ) ||
