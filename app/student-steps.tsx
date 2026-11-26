@@ -1,0 +1,12 @@
+"use client";
+export default function StudentSteps({current}:{current:number}) {
+ const steps=[
+  {title:'Deinen persönlichen Link öffnen',text:'Öffne den Link deiner Lehrperson. Du brauchst weder ein Konto noch das Lehrerpasswort. Bewahre den Link auf: Er führt später wieder zu deinem Beitrag und zur Abstimmung. Gib ihn nicht weiter.'},
+  {title:'Deinen Antrag begründen',text:'Entscheide, was du für Thiel beantragst: Gefängnis oder Psychiatrie. Trage unten Titel, Antrag, Rechtsquelle, eine weitere historische Quelle und den stärksten Einwand mit deiner Antwort ein. Verwende konkrete Fundstellen. Den vollständigen Auftrag findest du direkt unter dieser Anleitung.'},
+  {title:'Dein Plädoyer aufnehmen',text:'Klicke auf „Kameraaufnahme starten“ und erlaube Kamera und Mikrofon. Sprich zwei bis drei Minuten; nach drei Minuten stoppt die Aufnahme automatisch. Alternativ wählst du eine vorhandene MP4-, WebM- oder MOV-Datei bis 80 MB aus.'},
+  {title:'Prüfen, hochladen und auf Freigabe warten',text:'Prüfe Bild und Ton in der Vorschau. Erst „Plädoyer in den Klassenraum hochladen“ sendet die Datei ab. Danach prüft die Lehrperson deinen Beitrag. Die Klasse sieht ihn erst nach ihrer Freigabe. Bei Bedarf kannst du ihn vor Ende der Einreichungsphase entfernen und neu einreichen.'},
+  {title:'Die Plädoyers der Klasse ansehen',text:'Sieh alle freigegebenen Beiträge an, auch die Gegenpositionen. Die Wiedergabezeit wird erfasst; blosses Vorspulen zählt nicht als Sichtung. Bei gemeinsamer Vorführung kann die Lehrperson die Sichtung bestätigen. Ist die Liste noch leer, warte auf die Freigaben.'},
+  {title:'Abstimmen und das Ergebnis vergleichen',text:'Sobald die Lehrperson die Abstimmung öffnet und die Sichtung vollständig ist, wählst du „Gefängnis“ oder „Psychiatrie“. Nenne das ausschlaggebende Argument oder die Quelle und klicke auf „Stimme abgeben“. Bis zum Schliessen kannst du deine Stimme ändern. Danach erscheint das Gesamtergebnis.'}
+ ];
+ return <section className="student-steps" aria-labelledby="student-steps-title"><h2 id="student-steps-title">Dein Weg zum Klassen-Votum</h2><p className="small">Öffne den Schritt, den du gerade brauchst. Alle sechs bleiben jederzeit nachlesbar.</p><ol>{steps.map((step,i)=><li key={i} aria-current={current===i+1?'step':undefined}><details key={`${i}-${current}`} open={current===i+1}><summary><span className="step-number">{i+1}.</span> {step.title}{current===i+1&&<span className="step-current"> · Jetzt</span>}</summary><p>{step.text}</p></details></li>)}</ol></section>;
+}

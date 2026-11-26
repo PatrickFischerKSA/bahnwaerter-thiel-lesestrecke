@@ -1074,3 +1074,12 @@ figure {
 .teacher-link-list input, .teacher-area input, .teacher-area select { max-width: 100%; }
 .teacher-link-list input[readonly] { width: 100%; }
 .source-jumps button[aria-pressed="true"] { font-weight: 750; border-bottom: 3px solid #17392e; }
+
+/* A continuous reading sequence, not cards. */
+.student-steps > ol { list-style: none; padding: 0; margin: 1rem 0 2rem; }
+.student-steps > ol > li { margin: 0; border-bottom: 1px solid var(--line, #c7cec1); }
+.student-steps details { border: 0; border-radius: 0; background: transparent; box-shadow: none; margin: 0; padding: .8rem 0; }
+.student-steps details > p { max-width: 70ch; margin: .65rem 0 .2rem 1.6rem; }
+.student-steps .step-number { font-variant-numeric: tabular-nums; }
+.student-steps .step-current { color: #8b3d29; font-size: .85em; }
+.student-steps [aria-current="step"] > details > summary { color: #193e31; }
