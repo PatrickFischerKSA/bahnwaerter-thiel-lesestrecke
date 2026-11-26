@@ -342,9 +342,8 @@ export default function Home() {
                 {s.number} · {s.title}
               </a>
             ))}
+            <a href="#plaedoyers" aria-current={route.split("?")[0] === "plaedoyers" ? "page" : undefined}>Schlussplädoyers aufnehmen und sichten</a>
             <h2>05 · Das Urteil</h2>
-            <a href="#lehrer" aria-current={route === "lehrer" ? "page" : undefined}>Lehrerbereich · Klassenräume</a>
-            <a href="#plaedoyers" aria-current={route.startsWith("plaedoyers") ? "page" : undefined}>Video-Plädoyers und Klassen-Votum</a>
             <a href="#prozess/urteil" aria-current={route === "prozess/urteil" ? "page" : undefined}>Urteilsberatung und Verkündung</a>
             <a href="#bericht">Ermittlungsbericht</a>
             <a
@@ -359,6 +358,8 @@ export default function Home() {
             >
               Lesejournal & Export
             </a>
+            <h2>06 · Das abschliessende Klassen-Votum</h2>
+            <a href="#plaedoyers/abstimmung" aria-current={route.startsWith("plaedoyers/abstimmung") ? "page" : undefined}>Zum Schluss: abstimmen und Ergebnis vergleichen</a>
           </nav>
           <p className="small">
             Freie Reihenfolge möglich. Keine Pflichtantworten, keine
