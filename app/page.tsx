@@ -305,7 +305,7 @@ export default function Home() {
               href="#fall"
               aria-current={route === "fall" ? "page" : undefined}
             >
-              Charité oder Gefängnis?
+              Tatortbefund & Skizze
             </a>
             <a
               href="#kontext"

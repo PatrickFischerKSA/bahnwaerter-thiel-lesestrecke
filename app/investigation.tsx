@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import CrimeSketch from "./crime-sketch";
 import HistoricalSources from "./historical-sources";
 import material from "./imported-material.json";
 import demo from "./demo-material.json";
@@ -108,9 +109,172 @@ export default function Investigation({
         </div>
         {heading(
           "Ermittlungsakte · Gerhart Hauptmann, 1888",
-          "Charité oder Gefängnis?",
+          "Tatortbefund: Was ist gesichert?",
           "Zwei Tote in der Wohnung. Ein Mann auf den Gleisen. In seiner Hand die Mütze seines verstorbenen Sohnes.",
         )}
+        <section className="panel padded">
+          <p className="eyebrow">Originalbefund · Textseite 66</p>
+          <blockquote>{text.find((p) => p.page === 66)?.text}</blockquote>
+          {ref(66)}
+        </section>
+        <div className="evidence-divider">
+          <span>Tatort und Auffindesituation / Filmprotokoll</span>
+          <span>DEFA · 1982</span>
+        </div>
+        <section
+          className="film-exhibits"
+          aria-label="Drei Filmspuren zum Ausgang des Falls"
+        >
+          {[
+            {
+              id: "wohnung",
+              title: "Die Wohnung",
+              time: "65:55–66:08 · 13 Sekunden",
+              caption:
+                "Die Kamera erschliesst den verwüsteten Raum und zeigt Lene auf dem Sofa.",
+              alt: "Lene liegt reglos auf dem Sofa in der verwüsteten Wohnung.",
+            },
+            {
+              id: "gleise",
+              title: "Thiel an den Gleisen",
+              time: "67:14–67:28 · 14 Sekunden",
+              caption:
+                "Thiel sitzt vor der Lokomotive und hält die Mütze seines Sohnes in den Händen.",
+              alt: "Thiel sitzt an den Gleisen und hält Tobias’ Mütze.",
+            },
+            {
+              id: "anstalt",
+              title: "In der Anstalt",
+              time: "69:08–69:24 · 16 Sekunden",
+              caption:
+                "Thiels Bewegungen und die Beobachtung durch das Personal bilden den Schluss der Filmhandlung.",
+              alt: "Thiel steht in einem kargen Anstaltszimmer, einen Arm über dem Kopf.",
+            },
+          ].map((clip, index) => (
+            <figure className="film-exhibit" key={clip.id}>
+              <video
+                controls
+                playsInline
+                preload="none"
+                poster={`${BASE}/media/fall/${clip.id}.jpg`}
+                aria-label={`Filmspur ${index + 1}: ${clip.title}`}
+                onPlay={(event) => {
+                  const current = event.currentTarget;
+                  current
+                    .closest(".film-exhibits")
+                    ?.querySelectorAll("video")
+                    .forEach((video) => {
+                      if (video !== current) video.pause();
+                    });
+                }}
+              >
+                <source
+                  src={`${BASE}/media/fall/${clip.id}.mp4`}
+                  type="video/mp4"
+                />
+                Dein Browser unterstützt die Videowiedergabe nicht.
+              </video>
+              <figcaption>
+                <p className="eyebrow">
+                  Filmspur {index + 1} · {clip.time}
+                </p>
+                <h2>{clip.title}</h2>
+                <p>{clip.caption}</p>
+                <a
+                  href={`${BASE}/media/fall/${clip.id}.jpg`}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Standbild öffnen: ${clip.alt}`}
+                >
+                  Standbild öffnen ↗
+                </a>
+                {" · "}
+                <a href={`${BASE}/media/fall/${clip.id}.mp4`}>
+                  Clip separat öffnen ↗
+                </a>
+              </figcaption>
+            </figure>
+          ))}
+          <p className="film-source">
+            Bahnwärter Thiel · DEFA, 1982. Zeitangaben beziehen sich auf die
+            bereitgestellte Filmfassung. Die Bilder zeigen die filmische
+            Interpretation; sie ersetzen keinen Textbeleg und kein Gutachten
+            über Thiels Zustand zur Tatzeit.
+          </p>
+        </section>
+        <CrimeSketch answers={answers} update={update} />
+        <div className="case-opening">
+          <div>
+            <p className="case-stamp">Nach der Spurensicherung: die grundsätzliche Frage</p>
+            <h2>Charité oder Gefängnis?</h2>
+            <p>
+              Entscheidend ist sein Zustand während der Tat. Die spätere
+              Einweisung ist ein Indiz, kein Urteil.
+            </p>
+            <p>
+              Arbeiter finden Lene und ihr kleines Kind getötet. Thiel sitzt an
+              der Bahnstrecke. Er wird gewaltsam von den Gleisen entfernt,
+              zunächst in ein Berliner Untersuchungsgefängnis und noch am ersten
+              Tag in die psychiatrische Abteilung der Charité gebracht.
+            </p>
+            <p>
+              <strong>
+                Das ist der Schluss der Novelle. Er enthält weder eine
+                Gerichtsverhandlung noch ein ärztliches Gutachten.
+              </strong>
+            </p>
+            <div className="actions">
+              <button className="primary" onClick={() => reference(65)}>
+                Schlussprotokoll lesen · S. 65–66
+              </button>
+              <button onClick={() => go("kontext")}>
+                Historischen Massstab klären →
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="case-columns">
+          <section className="panel padded">
+            <h2>Auftrag der Spurensicherung</h2>
+            <p>
+              Rekonstruiere, was der Schluss voraussetzt. Sichere Textstellen,
+              Filmbeobachtungen und historische Regeln getrennt. Prüfe zwei
+              konkurrierende Erklärungen: verantwortliches Handeln und Verlust
+              freier Willensbestimmung zur Tatzeit.
+            </p>
+            <p>
+              Am Ende steht ein eigener{" "}
+              <strong>
+                Ermittlungsbericht mit Ergebnis, Belegen, Gegenbefund und
+                Beweisgrenzen
+              </strong>
+              . Eine begründete Feststellung unzureichender Beweise ist ein
+              Ergebnis; ein blosses „man weiss es nicht“ ist keines.
+            </p>
+          </section>
+          <section className="panel padded">
+            <h2>Drei verschiedene Fragen</h2>
+            <ol>
+              <li>
+                <strong>Tat:</strong> Was wird über Lene, das Kind und Thiel
+                berichtet, was bleibt ausgespart?
+              </li>
+              <li>
+                <strong>Zurechnung:</strong> Was lässt sich über Thiels Zustand
+                während der Tötungen erschliessen?
+              </li>
+              <li>
+                <strong>Darstellung:</strong> Wie lenken Erzähler und Film
+                unseren Befund?
+              </li>
+            </ol>
+            <p>
+              Frühere Pflichtverletzungen gegenüber Tobias, strafrechtliche
+              Zurechnung der Tötungen und spätere Behandlungsbedürftigkeit sind
+              nicht dasselbe.
+            </p>
+          </section>
+        </div>
         <section
           className="institution-spread"
           aria-label="Bildbelege zu Medizin und Strafvollzug"
@@ -219,181 +383,19 @@ export default function Investigation({
             </a>
           </div>
         </section>
-        <div className="evidence-divider">
-          <span>Filmprotokoll / Drei Befunde am Ende</span>
-          <span>DEFA · 1982</span>
-        </div>
-        <section
-          className="film-exhibits"
-          aria-label="Drei Filmspuren zum Ausgang des Falls"
-        >
-          {[
-            {
-              id: "wohnung",
-              title: "Die Wohnung",
-              time: "65:55–66:08 · 13 Sekunden",
-              caption:
-                "Die Kamera erschliesst den verwüsteten Raum und zeigt Lene auf dem Sofa.",
-              alt: "Lene liegt reglos auf dem Sofa in der verwüsteten Wohnung.",
-            },
-            {
-              id: "gleise",
-              title: "Thiel an den Gleisen",
-              time: "67:14–67:28 · 14 Sekunden",
-              caption:
-                "Thiel sitzt vor der Lokomotive und hält die Mütze seines Sohnes in den Händen.",
-              alt: "Thiel sitzt an den Gleisen und hält Tobias’ Mütze.",
-            },
-            {
-              id: "anstalt",
-              title: "In der Anstalt",
-              time: "69:08–69:24 · 16 Sekunden",
-              caption:
-                "Thiels Bewegungen und die Beobachtung durch das Personal bilden den Schluss der Filmhandlung.",
-              alt: "Thiel steht in einem kargen Anstaltszimmer, einen Arm über dem Kopf.",
-            },
-          ].map((clip, index) => (
-            <figure className="film-exhibit" key={clip.id}>
-              <video
-                controls
-                playsInline
-                preload="none"
-                poster={`${BASE}/media/fall/${clip.id}.jpg`}
-                aria-label={`Filmspur ${index + 1}: ${clip.title}`}
-                onPlay={(event) => {
-                  const current = event.currentTarget;
-                  current
-                    .closest(".film-exhibits")
-                    ?.querySelectorAll("video")
-                    .forEach((video) => {
-                      if (video !== current) video.pause();
-                    });
-                }}
-              >
-                <source
-                  src={`${BASE}/media/fall/${clip.id}.mp4`}
-                  type="video/mp4"
-                />
-                Dein Browser unterstützt die Videowiedergabe nicht.
-              </video>
-              <figcaption>
-                <p className="eyebrow">
-                  Filmspur {index + 1} · {clip.time}
-                </p>
-                <h2>{clip.title}</h2>
-                <p>{clip.caption}</p>
-                <a
-                  href={`${BASE}/media/fall/${clip.id}.jpg`}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Standbild öffnen: ${clip.alt}`}
-                >
-                  Standbild öffnen ↗
-                </a>
-                {" · "}
-                <a href={`${BASE}/media/fall/${clip.id}.mp4`}>
-                  Clip separat öffnen ↗
-                </a>
-              </figcaption>
-            </figure>
-          ))}
-          <p className="film-source">
-            Bahnwärter Thiel · DEFA, 1982. Zeitangaben beziehen sich auf die
-            bereitgestellte Filmfassung. Die Bilder zeigen die filmische
-            Interpretation; sie ersetzen keinen Textbeleg und kein Gutachten
-            über Thiels Zustand zur Tatzeit.
-          </p>
-        </section>
-        <div className="case-opening">
-          <div>
-            <p className="case-stamp">Ausgangspunkt: der Schluss</p>
-            <h2>War Thiel für die Tötungen verantwortlich?</h2>
-            <p>
-              Entscheidend ist sein Zustand während der Tat. Die spätere
-              Einweisung ist ein Indiz, kein Urteil.
-            </p>
-            <p>
-              Arbeiter finden Lene und ihr kleines Kind getötet. Thiel sitzt an
-              der Bahnstrecke. Er wird gewaltsam von den Gleisen entfernt,
-              zunächst in ein Berliner Untersuchungsgefängnis und noch am ersten
-              Tag in die psychiatrische Abteilung der Charité gebracht.
-            </p>
-            <p>
-              <strong>
-                Das ist der Schluss der Novelle. Er enthält weder eine
-                Gerichtsverhandlung noch ein ärztliches Gutachten.
-              </strong>
-            </p>
-            <div className="actions">
-              <button className="primary" onClick={() => reference(65)}>
-                Schlussprotokoll lesen · S. 65–66
-              </button>
-              <button onClick={() => go("kontext")}>
-                Historischen Massstab klären →
-              </button>
-            </div>
-          </div>
-        </div>
-        <section className="panel padded">
-          <p className="eyebrow">Originalbefund · Textseite 66</p>
-          <blockquote>{text.find((p) => p.page === 66)?.text}</blockquote>
-          {ref(66)}
-        </section>
-        <div className="case-columns">
-          <section className="panel padded">
-            <h2>Auftrag der Spurensicherung</h2>
-            <p>
-              Rekonstruiere, was der Schluss voraussetzt. Sichere Textstellen,
-              Filmbeobachtungen und historische Regeln getrennt. Prüfe zwei
-              konkurrierende Erklärungen: verantwortliches Handeln und Verlust
-              freier Willensbestimmung zur Tatzeit.
-            </p>
-            <p>
-              Am Ende steht ein eigener{" "}
-              <strong>
-                Ermittlungsbericht mit Ergebnis, Belegen, Gegenbefund und
-                Beweisgrenzen
-              </strong>
-              . Eine begründete Feststellung unzureichender Beweise ist ein
-              Ergebnis; ein blosses „man weiss es nicht“ ist keines.
-            </p>
-          </section>
-          <section className="panel padded">
-            <h2>Drei verschiedene Fragen</h2>
-            <ol>
-              <li>
-                <strong>Tat:</strong> Was wird über Lene, das Kind und Thiel
-                berichtet, was bleibt ausgespart?
-              </li>
-              <li>
-                <strong>Zurechnung:</strong> Was lässt sich über Thiels Zustand
-                während der Tötungen erschliessen?
-              </li>
-              <li>
-                <strong>Darstellung:</strong> Wie lenken Erzähler und Film
-                unseren Befund?
-              </li>
-            </ol>
-            <p>
-              Frühere Pflichtverletzungen gegenüber Tobias, strafrechtliche
-              Zurechnung der Tötungen und spätere Behandlungsbedürftigkeit sind
-              nicht dasselbe.
-            </p>
-          </section>
-        </div>
         <section className="panel padded">
           <h2>Gang der Ermittlung</h2>
           <p><a href="#quellen">Historische Quellenakte: Gericht, Behandlung und philosophische Kritik</a></p>
           <ol className="case-steps">
             <li>
-              <a href="#kontext">
-                Tatort der Lektüre: Kaiserreich, Strafrecht, Psychiatrie.
-              </a>
-            </li>
-            <li>
               <a href="#lesen/anfang">
                 Rückrekonstruktion: acht Text- und Filmabschnitte vom Alltag bis
                 zum Zusammenbruch.
+              </a>
+            </li>
+            <li>
+              <a href="#kontext">
+                Tatort der Lektüre: Kaiserreich, Strafrecht, Psychiatrie.
               </a>
             </li>
             <li>
