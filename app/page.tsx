@@ -324,13 +324,13 @@ export default function Home() {
                 {c.title}
               </a>
             ))}
-            <h2>03 · Material und Spuren</h2>
-            <a href="#prozess/vorbereitung" aria-current={route === "prozess/vorbereitung" ? "page" : undefined}>Rollen übernehmen · Prozess vorbereiten</a>
+            <h2>03 · Die Prozessakte</h2>
+            <a href="#prozess/vorbereitung" aria-current={route === "prozess/vorbereitung" ? "page" : undefined}>Die Verfahrensbeteiligten</a>
             <a href="#material">Neun Dossiers & Theorie-Videos</a>
             <a href="#quellen" aria-current={route === "quellen" ? "page" : undefined}>Historische Quellen: Recht & Behandlung</a>
             <a href="#spuren">Spurenregister</a>
-            <h2>04 · Deutungen gegenprüfen</h2>
-            <a href="#prozess/verhandlung" aria-current={route === "prozess/verhandlung" ? "page" : undefined}>Verhandeln · Beweise und Einwände</a>
+            <h2>04 · Die Hauptverhandlung</h2>
+            <a href="#prozess/verhandlung" aria-current={route === "prozess/verhandlung" ? "page" : undefined}>Beweisaufnahme und Plädoyers</a>
             {stations.map((s) => (
               <a
                 aria-current={station?.id === s.id ? "page" : undefined}
@@ -340,8 +340,8 @@ export default function Home() {
                 {s.number} · {s.title}
               </a>
             ))}
-            <h2>05 · Ergebnis und Sicherung</h2>
-            <a href="#prozess/urteil" aria-current={route === "prozess/urteil" ? "page" : undefined}>Urteil begründen und verkünden</a>
+            <h2>05 · Das Urteil</h2>
+            <a href="#prozess/urteil" aria-current={route === "prozess/urteil" ? "page" : undefined}>Urteilsberatung und Verkündung</a>
             <a href="#bericht">Ermittlungsbericht</a>
             <a
               href="#grundlagen"
