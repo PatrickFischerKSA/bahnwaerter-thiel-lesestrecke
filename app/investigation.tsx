@@ -75,6 +75,16 @@ export default function Investigation({
   reference,
 }: Props) {
   const [message, setMessage] = useState("");
+  const [activeClip, setActiveClip] = useState("wohnung");
+  const entrySteps = ["Fallbeispiel", "Protokoll", "Dilemma", "Hintergründe", "Textrepetition"];
+  const storedStep = Number(answers["case:entry-step"] || 0);
+  const entryStep = Number.isInteger(storedStep) && storedStep >= 0 && storedStep < 5 ? storedStep : 0;
+  const pauseEntryFilms = () => document.querySelectorAll<HTMLVideoElement>(".entry-reader video").forEach(video => video.pause());
+  const changeEntryStep = (step: number) => {
+    pauseEntryFilms();
+    update("case:entry-step", String(Math.max(0, Math.min(4, step))));
+    requestAnimationFrame(() => document.getElementById("entry-navigation")?.scrollIntoView({ block: "start" }));
+  };
   const evidence = readEvidence(answers["case:evidence"]);
   const field = (id: string, label: string, placeholder = "") => (
     <label key={id} className="case-field">
@@ -101,7 +111,7 @@ export default function Investigation({
   if (route === "quellen") return <HistoricalSources answers={answers} update={update} />;
   if (route === "fall")
     return (
-      <article className="case-file">
+      <article className="case-file entry-reader">
         <div className="file-register">
           <span>AKTE THIEL / 1888</span>
           <span>Literarische Ermittlung · Ausgang offen</span>
@@ -112,6 +122,13 @@ export default function Investigation({
           "Der Fall Thiel: Was ist geschehen?",
           "Zwei Tote in der Wohnung. Ein Mann auf den Gleisen. In seiner Hand die Mütze seines verstorbenen Sohnes.",
         )}
+        <nav className="entry-navigation" id="entry-navigation" aria-label="Abschnitte der Einstiegsakte">
+          <div className="entry-index">{entrySteps.map((name, index) => <button key={name} aria-current={entryStep === index ? "step" : undefined} onClick={() => changeEntryStep(index)}>{index + 1}. {name}</button>)}</div>
+          <label className="entry-select">Abschnitt<select value={entryStep} onChange={event => changeEntryStep(Number(event.target.value))}>{entrySteps.map((name, index) => <option key={name} value={index}>{index + 1}. {name}</option>)}</select></label>
+          <div className="entry-paging"><button disabled={entryStep === 0} onClick={() => changeEntryStep(entryStep - 1)}>Zurück</button><span aria-live="polite">{entryStep + 1} / 5 · {entrySteps[entryStep]}</span>{entryStep < 4 ? <button onClick={() => changeEntryStep(entryStep + 1)}>Weiter</button> : <button onClick={() => go("lesen/anfang")}>Text lesen</button>}</div>
+        </nav>
+        <div hidden={entryStep !== 0} className="entry-page" aria-label="Fallbeispiel">
+        <div className="clip-index" aria-label="Filmbeispiel wählen">{[["wohnung", "Die Wohnung"], ["gleise", "An den Gleisen"], ["anstalt", "In der Anstalt"]].map(([id, label]) => <button key={id} aria-pressed={activeClip === id} onClick={() => { pauseEntryFilms(); setActiveClip(id); }}>{label}</button>)}</div>
         <div className="evidence-divider">
           <span>1 · Fallbeispiel / Drei kurze Filmsequenzen</span>
           <span>DEFA · 1982</span>
@@ -146,7 +163,7 @@ export default function Investigation({
               alt: "Thiel steht in einem kargen Anstaltszimmer, einen Arm über dem Kopf.",
             },
           ].map((clip, index) => (
-            <figure className="film-exhibit" key={clip.id}>
+            <figure className="film-exhibit" key={clip.id} hidden={activeClip !== clip.id}>
               <video
                 controls
                 playsInline
@@ -197,20 +214,24 @@ export default function Investigation({
             über Thiels Zustand zur Tatzeit.
           </p>
         </section>
+        </div>
+        <div hidden={entryStep !== 1} className="entry-page" aria-label="Protokoll">
         <section className="entry-stage" aria-labelledby="protokoll-heading">
           <p className="eyebrow">2 · Protokoll</p>
           <h2 id="protokoll-heading">Was wird gefunden, was wird beobachtet?</h2>
           <p>Halte Personen, Orte, Gegenstände und beobachtbares Verhalten fest. Trenne die Auffindesituation von Vermutungen über die Tat.</p>
-        <section className="panel padded">
-          <p className="eyebrow">Originalbefund · Textseite 66</p>
+        <details className="entry-module">
+          <summary>Originalbefund lesen · Textseite 66</summary>
           <blockquote>{text.find((p) => p.page === 66)?.text}</blockquote>
           {ref(66)}
-        </section>
+        </details>
         {field("case:befundprotokoll", "Dein Befundprotokoll: Beobachtung · Fundstelle · offene Frage", "Was ist im Film sichtbar? Was steht im Text? Was lässt sich daraus noch nicht schliessen?")}
           <details className="entry-module"><summary>Räumlichen Befund sichern: Skizze, Upload und Prüfung</summary>
             <CrimeSketch answers={answers} update={update} />
           </details>
         </section>
+        </div>
+        <div hidden={entryStep !== 2} className="entry-page" aria-label="Dilemma">
         <div className="case-opening">
           <div>
             <p className="case-stamp">3 · Das Dilemma kurz umrissen</p>
@@ -242,6 +263,8 @@ export default function Investigation({
             </details>
           </div>
         </div>
+        </div>
+        <div hidden={entryStep !== 3} className="entry-page" aria-label="Hintergründe">
         <section className="entry-stage" aria-labelledby="background-heading">
           <p className="eyebrow">4 · Hintergründe</p>
           <h2 id="background-heading">Welche Massstäbe gelten um 1888?</h2>
@@ -402,12 +425,15 @@ export default function Investigation({
         </section>
           </details>
         </section>
+        </div>
+        <div hidden={entryStep !== 4} className="entry-page" aria-label="Textrepetition">
         <section className="entry-stage" aria-labelledby="repetition-heading">
           <p className="eyebrow">5 · Genaue Textrepetition</p>
           <h2 id="repetition-heading">Die Vorgeschichte am Wortlaut rekonstruieren.</h2>
           <p>Acht Abschnitte führen vom Alltag bis zum Zusammenbruch. In jedem Abschnitt stehen zuerst Originaltext und Film, danach Detailfragen mit Feedback und Musterüberlegungen. Sichere die Belege für dein späteres Ergebnis.</p>
           <button className="primary" onClick={() => go("lesen/anfang")}>Textrepetition beginnen: Alltag und erste Bindung</button>
         </section>
+        <details className="entry-module"><summary>Gesamter Ermittlungsweg und vorläufige Hypothese</summary>
         <section className="panel padded">
           <h2>Gang der Ermittlung</h2>
           <p><a href="#quellen">Historische Quellenakte: Gericht, Behandlung und philosophische Kritik</a></p>
@@ -451,6 +477,9 @@ export default function Investigation({
         <button className="primary" onClick={() => go("lesen/anfang")}>
           Zur genauen Textrepetition
         </button>
+        </details>
+        </div>
+        <p className="entry-footnote">Alle Abschnitte sind frei anwählbar. Notizen bleiben beim Wechsel erhalten.</p>
       </article>
     );
   if (route === "kontext")

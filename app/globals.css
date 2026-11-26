@@ -1028,3 +1028,31 @@ figure {
 .entry-stage { padding: 2rem 0; border-top: 1px solid #9ca99b; margin-top: 2rem; }
 .entry-module { border: 0; border-top: 1px solid #c5cdbf; border-radius: 0; padding: 1rem 0; margin: 1rem 0; }
 .entry-module > summary { cursor: pointer; font-weight: 600; }
+/* A linear dossier: one page at a time, plain-text navigation, no cards. */
+.entry-reader [hidden] { display: none !important; }
+.entry-reader .chapter-heading { padding-top: 1rem; }
+.entry-reader .chapter-heading h1 { font-size: clamp(1.8rem, 3vw, 2.7rem); margin: .6rem 0; }
+.entry-reader .chapter-heading .lead { font-size: 1.05rem; line-height: 1.5; margin-bottom: 1rem; }
+.entry-navigation { position: sticky; top: 0; z-index: 5; background: var(--paper); border-top: 1px solid #9a8b70; border-bottom: 1px solid #9a8b70; padding: .65rem 0; scroll-margin-top: 0; }
+.entry-index, .clip-index { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+.entry-index button, .clip-index button, .entry-paging button { border: 0; border-radius: 0; background: transparent; padding: .25rem 0; text-align: left; text-decoration: underline; text-underline-offset: .3em; }
+.entry-index button[aria-current], .clip-index button[aria-pressed=true] { color: var(--pine); font-weight: 700; text-decoration-thickness: 3px; }
+.entry-index button:not([aria-current]), .clip-index button[aria-pressed=false] { text-decoration-color: transparent; }
+.entry-index button:hover, .clip-index button:hover { text-decoration-color: currentColor; }
+.entry-paging { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .5rem; }
+.entry-paging span { font-size: .9rem; }
+.entry-paging button:disabled { opacity: .4; cursor: default; text-decoration: none; }
+.entry-select { display: none; }
+.entry-page { padding-top: 1rem; }
+.entry-reader .entry-stage, .entry-reader .case-opening { margin: 0; padding: .5rem 0; border: 0; }
+.entry-reader .evidence-divider { margin: .75rem 0; padding: .5rem 0; }
+.entry-reader .film-exhibits { display: block; margin: 0; }
+.entry-reader .film-exhibit { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.25rem; margin: 0; padding: .5rem 0; border: 0; }
+.entry-reader .film-exhibit video, .entry-reader .film-exhibit:nth-child(2) video { width: 100%; max-height: 42vh; object-fit: contain; transform: none; box-shadow: none; }
+.entry-reader .film-exhibit figcaption { padding: 0; }
+.entry-reader .film-exhibit h2 { font-size: 1.4rem; margin: .4rem 0; }
+.entry-reader .film-source { font-size: .85rem; margin-top: 1rem; }
+.entry-footnote { border-top: 1px solid var(--line); margin-top: 1.5rem; padding-top: .6rem; font-size: .85rem; color: var(--muted); }
+@media(min-width: 701px) { .sidebar { position: sticky; top: 0; align-self: start; max-height: 100dvh; overflow-y: auto; } }
+@media(max-width: 700px) { .entry-index { display: none; } .entry-select { display: flex; align-items: center; gap: 1rem; } .entry-select select { flex: 1; min-width: 0; } .entry-reader .film-exhibit { grid-template-columns: 1fr; } .entry-reader .film-exhibit video { max-height: 32vh; } .entry-reader .file-register { font-size: .65rem; gap: .5rem; } }
+@media print { .entry-reader .entry-page[hidden], .entry-reader .film-exhibit[hidden] { display: block !important; } .entry-navigation { display: none; } .sidebar { position: static; max-height: none; } }
