@@ -76,7 +76,7 @@ export default function Investigation({
 }: Props) {
   const [message, setMessage] = useState("");
   const [activeClip, setActiveClip] = useState("wohnung");
-  const entrySteps = ["Fallbeispiel", "Protokoll", "Dilemma", "Hintergründe", "Textrepetition"];
+  const entrySteps = ["Zwei Tote. Ein Überlebender.", "Spuren sichern", "Strafe oder Behandlung?", "Die Welt von 1888", "Wie konnte es dazu kommen?"];
   const storedStep = Number(answers["case:entry-step"] || 0);
   const entryStep = Number.isInteger(storedStep) && storedStep >= 0 && storedStep < 5 ? storedStep : 0;
   const pauseEntryFilms = () => document.querySelectorAll<HTMLVideoElement>(".entry-reader video").forEach(video => video.pause());
@@ -118,7 +118,7 @@ export default function Investigation({
           <span className="file-seal">Zurechnung ungeklärt</span>
         </div>
         {heading(
-          "Fallbeispiel · Gerhart Hauptmann, 1888",
+          "Der Fall Thiel · Gerhart Hauptmann, 1888",
           "Der Fall Thiel: Was ist geschehen?",
           "Zwei Tote in der Wohnung. Ein Mann auf den Gleisen. In seiner Hand die Mütze seines verstorbenen Sohnes.",
         )}
@@ -127,10 +127,10 @@ export default function Investigation({
           <label className="entry-select">Abschnitt<select value={entryStep} onChange={event => changeEntryStep(Number(event.target.value))}>{entrySteps.map((name, index) => <option key={name} value={index}>{index + 1}. {name}</option>)}</select></label>
           <div className="entry-paging"><button disabled={entryStep === 0} onClick={() => changeEntryStep(entryStep - 1)}>Zurück</button><span aria-live="polite">{entryStep + 1} / 5 · {entrySteps[entryStep]}</span>{entryStep < 4 ? <button onClick={() => changeEntryStep(entryStep + 1)}>Weiter</button> : <button onClick={() => go("lesen/anfang")}>Text lesen</button>}</div>
         </nav>
-        <div hidden={entryStep !== 0} className="entry-page" aria-label="Fallbeispiel">
+        <div hidden={entryStep !== 0} className="entry-page" aria-label="Zwei Tote. Ein Überlebender.">
         <div className="clip-index" aria-label="Filmbeispiel wählen">{[["wohnung", "Die Wohnung"], ["gleise", "An den Gleisen"], ["anstalt", "In der Anstalt"]].map(([id, label]) => <button key={id} aria-pressed={activeClip === id} onClick={() => { pauseEntryFilms(); setActiveClip(id); }}>{label}</button>)}</div>
         <div className="evidence-divider">
-          <span>1 · Fallbeispiel / Drei kurze Filmsequenzen</span>
+          <span>1 · Zwei Tote. Ein Überlebender.</span>
           <span>DEFA · 1982</span>
         </div>
         <section
@@ -215,9 +215,9 @@ export default function Investigation({
           </p>
         </section>
         </div>
-        <div hidden={entryStep !== 1} className="entry-page" aria-label="Protokoll">
+        <div hidden={entryStep !== 1} className="entry-page" aria-label="Spuren sichern">
         <section className="entry-stage" aria-labelledby="protokoll-heading">
-          <p className="eyebrow">2 · Protokoll</p>
+          <p className="eyebrow">2 · Spuren sichern</p>
           <h2 id="protokoll-heading">Was wird gefunden, was wird beobachtet?</h2>
           <p>Halte Personen, Orte, Gegenstände und beobachtbares Verhalten fest. Trenne die Auffindesituation von Vermutungen über die Tat.</p>
         <details className="entry-module">
@@ -231,10 +231,10 @@ export default function Investigation({
           </details>
         </section>
         </div>
-        <div hidden={entryStep !== 2} className="entry-page" aria-label="Dilemma">
+        <div hidden={entryStep !== 2} className="entry-page" aria-label="Strafe oder Behandlung?">
         <div className="case-opening">
           <div>
-            <p className="case-stamp">3 · Das Dilemma kurz umrissen</p>
+            <p className="case-stamp">3 · Strafe oder Behandlung?</p>
             <h2>Gefängnis oder Krankenhaus?</h2>
             <p>
               Soll Thiel für die Tötungen bestraft werden, benötigt er psychiatrische Behandlung – und wie hängen diese Fragen zusammen? Entscheidend ist auch sein Zustand zur Tatzeit. Die Überführung in die Charité ist noch kein Urteil.
@@ -264,9 +264,9 @@ export default function Investigation({
           </div>
         </div>
         </div>
-        <div hidden={entryStep !== 3} className="entry-page" aria-label="Hintergründe">
+        <div hidden={entryStep !== 3} className="entry-page" aria-label="Die Welt von 1888">
         <section className="entry-stage" aria-labelledby="background-heading">
-          <p className="eyebrow">4 · Hintergründe</p>
+          <p className="eyebrow">4 · Die Welt von 1888</p>
           <h2 id="background-heading">Welche Massstäbe gelten um 1888?</h2>
           <p>Strafrecht, Psychiatrie und gesellschaftliche Bedingungen liefern die Massstäbe für die Untersuchung. Danach wird die Vorgeschichte Abschnitt für Abschnitt am Text rekonstruiert.</p>
           <div className="actions"><button className="primary" onClick={() => go("kontext")}>Zeit, Recht und Psychiatrie</button><button onClick={() => go("quellen")}>Historische Originalquellen</button></div>
@@ -426,12 +426,12 @@ export default function Investigation({
           </details>
         </section>
         </div>
-        <div hidden={entryStep !== 4} className="entry-page" aria-label="Textrepetition">
+        <div hidden={entryStep !== 4} className="entry-page" aria-label="Wie konnte es dazu kommen?">
         <section className="entry-stage" aria-labelledby="repetition-heading">
-          <p className="eyebrow">5 · Genaue Textrepetition</p>
+          <p className="eyebrow">5 · Wie konnte es dazu kommen?</p>
           <h2 id="repetition-heading">Die Vorgeschichte am Wortlaut rekonstruieren.</h2>
           <p>Acht Abschnitte führen vom Alltag bis zum Zusammenbruch. In jedem Abschnitt stehen zuerst Originaltext und Film, danach Detailfragen mit Feedback und Musterüberlegungen. Sichere die Belege für dein späteres Ergebnis.</p>
-          <button className="primary" onClick={() => go("lesen/anfang")}>Textrepetition beginnen: Alltag und erste Bindung</button>
+          <button className="primary" onClick={() => go("lesen/anfang")}>Die Vorgeschichte lesen: Alltag und erste Bindung</button>
         </section>
         <details className="entry-module"><summary>Gesamter Ermittlungsweg und vorläufige Hypothese</summary>
         <section className="panel padded">
@@ -475,7 +475,7 @@ export default function Investigation({
           "Welche Erklärung steht zunächst im Raum – und was müsste sie belegen?",
         )}
         <button className="primary" onClick={() => go("lesen/anfang")}>
-          Zur genauen Textrepetition
+          Die Vorgeschichte am Text untersuchen
         </button>
         </details>
         </div>
@@ -692,7 +692,7 @@ export default function Investigation({
           </p>
         </section>
         <button className="primary" onClick={() => go("lesen/anfang")}>
-          Zur genauen Textrepetition →
+          Die Vorgeschichte am Text untersuchen →
         </button>
       </>
     );

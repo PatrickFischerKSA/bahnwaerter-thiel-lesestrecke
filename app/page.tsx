@@ -305,7 +305,7 @@ export default function Home() {
               href="#fall"
               aria-current={route === "fall" ? "page" : undefined}
             >
-              Fallbeispiel & Protokoll
+              Zwei Tote. Ein Überlebender.
             </a>
             <a
               href="#kontext"
@@ -313,7 +313,7 @@ export default function Home() {
             >
               Zeit, Recht und Psychiatrie
             </a>
-            <h2>02 · Genaue Textrepetition</h2>
+            <h2>02 · Wie konnte es dazu kommen?</h2>
             {chapters.map((c, i) => (
               <a
                 aria-current={route === "lesen/" + c.id ? "page" : undefined}

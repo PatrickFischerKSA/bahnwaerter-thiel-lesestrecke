@@ -35,6 +35,6 @@ test('investigation integrates all supplied passage and theory material',()=>{
  const demo=JSON.parse(readFileSync(new URL('../app/demo-material.json',import.meta.url)));assert.equal(demo.segments.length,4);assert.equal(demo.tasks.length,3);
 });
 test('case starts from the ending and separates historical law from later transfer',()=>{
- const source=readFileSync(new URL('../app/page.tsx',import.meta.url),'utf8');assert.ok(/useState\(["']fall["']\)/.test(source));assert.ok(source.indexOf('01 · Fall und Massstab')<source.indexOf('02 · Genaue Textrepetition'));
+ const source=readFileSync(new URL('../app/page.tsx',import.meta.url),'utf8');assert.ok(/useState\(["']fall["']\)/.test(source));assert.ok(source.indexOf('01 · Fall und Massstab')<source.indexOf('02 · Wie konnte es dazu kommen?'));
  const investigation=readFileSync(new URL('../app/investigation.tsx',import.meta.url),'utf8').replace(/\s+/g,' ');assert.ok(investigation.includes('kein im Text')||investigation.includes('Ein genaues Tatdatum'));assert.ok(investigation.includes('§ 51'));assert.ok(investigation.includes('nicht automatisch eine Einweisung'));assert.ok(investigation.includes('keine Beweise im Fall Thiel'));assert.ok(investigation.includes('case:evidence'));assert.ok(investigation.includes('thiel-ermittlungsbericht.md'));
 });
