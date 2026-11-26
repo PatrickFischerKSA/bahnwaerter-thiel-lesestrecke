@@ -38,3 +38,22 @@ test('case starts from the ending and separates historical law from later transf
  const source=readFileSync(new URL('../app/page.tsx',import.meta.url),'utf8');assert.ok(/useState\(["']fall["']\)/.test(source));assert.ok(source.indexOf('01 · Fall und Massstab')<source.indexOf('02 · Wie konnte es dazu kommen?'));
  const investigation=readFileSync(new URL('../app/investigation.tsx',import.meta.url),'utf8').replace(/\s+/g,' ');assert.ok(investigation.includes('kein im Text')||investigation.includes('Ein genaues Tatdatum'));assert.ok(investigation.includes('§ 51'));assert.ok(investigation.includes('nicht automatisch eine Einweisung'));assert.ok(investigation.includes('keine Beweise im Fall Thiel'));assert.ok(investigation.includes('case:evidence'));assert.ok(investigation.includes('thiel-ermittlungsbericht.md'));
 });
+
+test('all chapter questions offer open perspectives rather than model paragraphs', () => {
+ for(const c of chapters) for(const q of c.questions) {
+  assert.ok(q.perspectives.length >= 2);
+  assert.ok(q.perspectives.every(p => p.length > 45 && p !== q.model));
+ }
+});
+test('writing feedback requests evidence, distinguishes signals, and never awards correctness', async () => {
+ const {reviewWriting} = await import('../app/lib/feedback.mjs');
+ assert.match(reviewWriting('').join(' '), /Noch kein Entwurf/);
+ assert.match(reviewWriting('Thiel ist böse.').join(' '), /Fundstelle ist noch nicht erkennbar/);
+ const supported=reviewWriting('Text S. 66: Thiel schweigt, deshalb bleibt sein Motiv jedoch offen.').join(' ');
+ assert.match(supported,/Fundstellensignal ist vorhanden/);
+ assert.match(supported,/Begründungszusammenhang/);
+ assert.match(supported,/Einschränkung oder Gegenposition/);
+ assert.doesNotMatch(supported,/richtig beantwortet|volle Punktzahl/);
+ assert.match(reviewWriting('Thiel ist Lokführer.').join(' '), /Sachhinweis: Thiel ist Bahnwärter/);
+ assert.doesNotMatch(reviewWriting('Thiel ist kein Lokführer.').join(' '), /Sachhinweis/);
+});

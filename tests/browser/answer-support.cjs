@@ -1,0 +1,20 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const assert=require('node:assert/strict');
+(async()=>{
+ const browser=await chromium.launch({headless:true}); const page=await browser.newPage(); const errors=[]; page.on('pageerror',e=>errors.push(e.message));
+ const base=process.env.TEST_BASE_URL || 'http://127.0.0.1:8768/bahnwaerter-thiel-lesestrecke/';
+ await page.goto(base); await page.getByRole('button',{name:'2. Spuren sichern',exact:true}).click();
+ const field=page.locator('textarea').first(); await field.fill('Thiel ist Lokführer.');
+ const support=page.locator('.answer-support:visible').first();
+ assert.equal(await support.locator('details').first().getAttribute('open'),null);
+ await support.getByRole('button',{name:'Rückmeldung zu meinem Entwurf'}).click(); await support.getByText(/Sachhinweis: Thiel ist Bahnwärter/).waitFor();
+ await field.fill('Text S. 66: Thiel schweigt, deshalb bleibt sein Motiv jedoch offen.');
+ await support.getByText(/Dein Entwurf wurde verändert/).waitFor(); await support.getByRole('button').click(); await support.getByText(/Fundstellensignal ist vorhanden/).waitFor();
+ await page.reload(); await page.getByRole('button',{name:'2. Spuren sichern',exact:true}).click(); assert.match(await page.locator('textarea').first().inputValue(),/Text S. 66/);
+ await page.goto(base+'#lesen/anfang'); await page.locator('.question').first().waitFor(); assert.equal(await page.locator('.question .answer-support').count(),4);
+ await page.goto(base+'#material/auftakt'); await page.locator('.answer-support').first().waitFor(); assert.equal(await page.locator('.answer-support').count(),4);
+ await page.locator('.answer-support summary').first().click(); assert.equal(await page.locator('.answer-support').first().locator('li').count(),3);
+ await page.goto(base+'#quellen'); assert.equal(await page.locator('.answer-support').count(),6);
+ await page.setViewportSize({width:390,height:844}); await page.goto(base+'#fall'); await page.waitForTimeout(200); assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ assert.deepEqual(errors,[]); await browser.close(); console.log('PASS: feedback, stale state, saved draft, chapter/material/source coverage and mobile overflow');
+})().catch(e=>{console.error(e);process.exit(1)});

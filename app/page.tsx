@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import AnswerSupport from "./answer-support";
+import { questionAngle } from "./solution-perspectives";
 import chapters from "./chapters.json";
 import pages from "./text.json";
 import Investigation from "./investigation";
@@ -75,7 +77,7 @@ function QuestionCard({
               <p>
                 <strong>Offene Aspekte:</strong> {result.missing.join(" · ")}. Falls
                 du diese Aspekte anders formuliert hast, vergleiche selbst mit
-                der Musterlösung.
+                den Lösungsperspektiven.
               </p>
             ) : (
               <p>
@@ -92,7 +94,7 @@ function QuestionCard({
           </>
         ) : (
           <p>
-            Die Rückmeldung erscheint beim Schreiben. Musterlösung und
+            Die Rückmeldung erscheint beim Schreiben. Lösungsperspektiven und
             Textstellen sind jederzeit zugänglich.
           </p>
         )}
@@ -105,14 +107,11 @@ function QuestionCard({
           </button>
         ))}
       </div>
-      <details className="solution">
-        <summary>Musterlösung und Begründung</summary>
-        <p>{q.model}</p>
-        <p className="small">
-          Eine mögliche Antwort. Andere begründete Deutungen sind möglich.
-          Belegstellen: {q.refs.join(", ")}.
-        </p>
-      </details>
+      <AnswerSupport value={value} perspective={{
+        angles: q.perspectives,
+        evidence: `Text S. ${q.refs.join(', ')}. Wähle selbst einen kurzen Wortbeleg; beim Filmvergleich zusätzlich eine Zeitmarke.`,
+        limit: 'Unterscheide ausdrücklich erzählte Angaben, Urteile anderer Figuren und eigene Deutungen. Welche Einschränkung braucht dein Ergebnis?'
+      }} />
     </article>
   );
 }
@@ -659,6 +658,7 @@ export default function Home() {
                   onChange={(e) => update(station.id, e.target.value)}
                   placeholder="Beobachtung → Beleg → Deutung …"
                 />
+                <AnswerSupport value={answers[station.id] || ""} perspective={{ angles: [questionAngle(station.prompt), ...station.focus.map(f => `Prüfe „${f}“ an einer konkreten Stelle: Stützt oder begrenzt sie deine These?`)], evidence: 'Für jede verglichene Passage Seite und Wortlaut angeben.', limit: `Die These „${station.thesis}“ auf einen Gegenbefund prüfen; sie darf im Ergebnis auch eingeschränkt werden.` }} />
                 <p className="small">
                   {
                     (answers[station.id] || "")

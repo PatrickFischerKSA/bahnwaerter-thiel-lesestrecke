@@ -1,4 +1,6 @@
 "use client";
+import AnswerSupport from "./answer-support";
+import { fieldPerspective } from "./solution-perspectives";
 import { useEffect, useRef, useState } from "react";
 import SketchReview from "./sketch-review";
 const KEY = "tatortskizze";
@@ -48,7 +50,7 @@ export default function CrimeSketch({ answers, update }: { answers: Record<strin
     <p role="status">{status || (busy ? "Bildakte wird geladen …" : file ? "Gespeicherte Skizze geladen." : "Noch keine Skizze hinterlegt.")}</p>
     {file && url && <figure className="sketch-preview"><img src={url} alt="Deine hochgeladene Tatortskizze" /><figcaption>{file.name} · <a href={url} download={file.name}>Skizze herunterladen</a></figcaption><button disabled={busy} onClick={async () => { setBusy(true); try { await storage("delete"); setFile(undefined); update("case:skizze-datei", ""); setStatus("Skizze aus der lokalen Bildakte entfernt."); } catch { setStatus("Löschen nicht möglich. Bitte erneut versuchen."); } finally { setBusy(false); } }}>Skizze entfernen</button></figure>}
     {file && url && <SketchReview key={url} file={file} url={url} answers={answers} update={update} />}
-    <details><summary>Befundlegende und Selbstprüfung</summary><label className="case-field">Nummer · Beobachtung · Quelle · offene Frage<textarea value={answers["case:skizze-legende"] || ""} onChange={e => update("case:skizze-legende", e.target.value)} placeholder="1 · … · Text S. … / Film … · unklar bleibt …" /></label><p>Prüfe jede Markierung: Ist sie belegt? Stammt sie aus dem Text oder aus der Verfilmung? Sind unbekannte Entfernungen und die nicht beobachtete Tat als offen gekennzeichnet?</p></details>
+    <details><summary>Befundlegende und Selbstprüfung</summary><label className="case-field">Nummer · Beobachtung · Quelle · offene Frage<textarea value={answers["case:skizze-legende"] || ""} onChange={e => update("case:skizze-legende", e.target.value)} placeholder="1 · … · Text S. … / Film … · unklar bleibt …" /></label><AnswerSupport value={answers["case:skizze-legende"] || ""} perspective={fieldPerspective("case:skizze-legende")} /><p>Prüfe jede Markierung: Ist sie belegt? Stammt sie aus dem Text oder aus der Verfilmung? Sind unbekannte Entfernungen und die nicht beobachtete Tat als offen gekennzeichnet?</p></details>
     <p className="small">Das Bild bleibt in diesem Browser auf diesem Gerät. Es ist kein zentraler Klassen-Upload und wird nur nach deinem Start lokal von der Browser-KI geprüft. Lade es für die Abgabe separat herunter; der Text-Export des Lesejournals enthält die Legende und den Dateinamen, nicht das Bild. Beim Löschen der Browserdaten geht auch die lokale Bildakte verloren.</p>
   </section>;
 }

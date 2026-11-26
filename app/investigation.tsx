@@ -1,4 +1,6 @@
 "use client";
+import AnswerSupport from "./answer-support";
+import { fieldPerspective } from "./solution-perspectives";
 import { useState } from "react";
 import CrimeSketch from "./crime-sketch";
 import HistoricalSources from "./historical-sources";
@@ -87,14 +89,14 @@ export default function Investigation({
   };
   const evidence = readEvidence(answers["case:evidence"]);
   const field = (id: string, label: string, placeholder = "") => (
-    <label key={id} className="case-field">
+    <div key={id}><label className="case-field">
       {label}
       <textarea
         value={answers[id] || ""}
         onChange={(e) => update(id, e.target.value)}
         placeholder={placeholder}
       />
-    </label>
+    </label><AnswerSupport value={answers[id] || ""} perspective={fieldPerspective(id)} /></div>
   );
   const ref = (p: number) => (
     <button key={p} className="textbutton" onClick={() => reference(p)}>
@@ -1189,9 +1191,10 @@ export default function Investigation({
           ))}
           <h3>Drei zugehörige Aufträge</h3>
           {demo.tasks.map((t) => (
-            <p key={t.id}>
-              <strong>{t.title}:</strong> {t.prompt}
-            </p>
+            <div key={t.id}>
+              <p><strong>{t.title}:</strong> {t.prompt}</p>
+              {field("material:demo:" + t.id, "Eigener Befund zum Übungstext")}
+            </div>
           ))}
           <h3>Rubrik des Ausgangsbestands</h3>
           {demo.rubrics[0].criteria.map((c) => (

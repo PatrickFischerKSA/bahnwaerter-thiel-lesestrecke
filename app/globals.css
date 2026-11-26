@@ -1056,3 +1056,10 @@ figure {
 @media(min-width: 701px) { .sidebar { position: sticky; top: 0; align-self: start; max-height: 100dvh; overflow-y: auto; } }
 @media(max-width: 700px) { .entry-index { display: none; } .entry-select { display: flex; align-items: center; gap: 1rem; } .entry-select select { flex: 1; min-width: 0; } .entry-reader .film-exhibit { grid-template-columns: 1fr; } .entry-reader .film-exhibit video { max-height: 32vh; } .entry-reader .file-register { font-size: .65rem; gap: .5rem; } }
 @media print { .entry-reader .entry-page[hidden], .entry-reader .film-exhibit[hidden] { display: block !important; } .entry-navigation { display: none; } .sidebar { position: static; max-height: none; } }
+
+.answer-support { margin: .6rem 0 1.4rem; border-top: 1px solid var(--line, #c4cabc); padding-top: .4rem; }
+.answer-support > details { margin: .35rem 0 .6rem; }
+.answer-support summary { cursor: pointer; font-weight: 650; }
+.answer-support li + li { margin-top: .65rem; }
+.answer-support .feedback { padding: .7rem 1rem; }
+.answer-support button { text-align: left; }

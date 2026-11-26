@@ -23,3 +23,19 @@ export function factWarnings(answer, refs=[]) {
  if(refs.some(p=>p>=60)&&clauses.some(s=>/thiel\s+(stirbt|begeht selbstmord|toetet sich)/.test(s)))warnings.push({text:'Thiel lebt am Ende. Der Text berichtet zunächst von der Untersuchungshaft und dann von der Aufnahme in die Charité.',page:66});
  return warnings;
 }
+
+/** Signals invite revision; presence never proves the argument correct. */
+export function reviewWriting(answer) {
+ const a = normalize(answer.trim());
+ if (!a) return ['Noch kein Entwurf vorhanden. Notiere zunächst einen konkreten Befund; die Lösungsperspektiven bleiben auch ohne Eingabe zugänglich.'];
+ const feedback = [];
+ if (/(?:\bs\.|\bseite|\btextseite)\s*\d+|\b\d{1,2}:\d{2}\b|§\s*\d+|\bspur\s*\d+|\baphorismus\s*\d+/.test(a)) feedback.push('Ein Fundstellensignal ist vorhanden. Prüfe, ob dort genau deine Beobachtung steht; eine Seitenzahl allein belegt die Folgerung noch nicht.');
+ else feedback.push('Eine genaue Fundstelle ist noch nicht erkennbar. Ergänze Textseite, Filmzeit, Spurennummer oder den Abschnitt der historischen Quelle. Bei einem reinen Fundstellenfeld genügt diese Angabe.');
+ if (/\b(weil|denn|deshalb|daher|dadurch|folglich|insofern)\b|daraus folgt/.test(a)) feedback.push('Ein Begründungszusammenhang ist sprachlich erkennbar. Trägt der genannte Beleg diesen Schluss, oder fehlt ein Zwischenschritt?');
+ else feedback.push('Der Schritt vom Befund zur Aussage bleibt sprachlich offen. Erkläre bei einer Deutungsfrage, warum gerade dieses Detail deinen Schluss stützt. Bei einer blossen Beobachtung ist noch keine Deutung nötig.');
+ if (/\b(aber|jedoch|hingegen|unklar|offen|vermutlich|moeglich|vielleicht|nicht belegt)\b|laesst sich nicht/.test(a)) feedback.push('Eine Einschränkung oder Gegenposition ist erkennbar. Benenne auch, welcher zusätzliche Befund die offene Frage klären könnte.');
+ else feedback.push('Prüfe die Reichweite deiner Aussage: Was ist beobachtet, was erschlossen? Ergänze bei einer Interpretation eine konkrete Grenze oder Gegenlesart.');
+ if (/\b(schizophren|schizophrenie)\b/.test(a)) feedback.push('Begriffsprüfung: Wird „Schizophrenie“ als moderne Hypothese oder als gesicherter Befund verwendet? Die Quellenakte erläutert die spätere Begriffsgeschichte; die Novelle liefert keine klinische Diagnose.');
+ for (const w of factWarnings(answer, [66])) feedback.push(`Sachhinweis: ${w.text} Nachlesen: Text S. ${w.page}.`);
+ return feedback;
+}
