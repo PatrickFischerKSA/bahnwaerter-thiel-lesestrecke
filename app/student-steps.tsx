@@ -1,7 +1,7 @@
 "use client";
 export default function StudentSteps({current}:{current:number}) {
  const steps=[
-  {title:'Deinen persönlichen Link öffnen',text:'Öffne den Link deiner Lehrperson. Du brauchst weder ein Konto noch das Lehrerpasswort. Bewahre den Link auf: Er führt später wieder zu deinem Beitrag und zur Abstimmung. Gib ihn nicht weiter.'},
+  {title:'Deinen persönlichen Link öffnen',text:'Öffne den Link deiner Lehrperson. Du brauchst weder ein Konto noch das Lehrerpasswort. Bewahre den Link auf: Er startet am Tatortbefund und speichert deine Teilnahme auf diesem Gerät. Folge der Ermittlung über Lektüre und Film bis zu den Plädoyers und zum abschliessenden Votum. Gib ihn nicht weiter.'},
   {title:'Deinen Antrag begründen',text:'Entscheide, was du für Thiel beantragst: Gefängnis oder Psychiatrie. Trage unten Titel, Antrag, Rechtsquelle, eine weitere historische Quelle und den stärksten Einwand mit deiner Antwort ein. Verwende konkrete Fundstellen. Den vollständigen Auftrag findest du direkt unter dieser Anleitung.'},
   {title:'Dein Plädoyer aufnehmen',text:'Klicke auf „Kameraaufnahme starten“ und erlaube Kamera und Mikrofon. Sprich zwei bis drei Minuten; nach drei Minuten stoppt die Aufnahme automatisch. Alternativ wählst du eine vorhandene MP4-, WebM- oder MOV-Datei bis 80 MB aus.'},
   {title:'Prüfen, hochladen und auf Freigabe warten',text:'Prüfe Bild und Ton in der Vorschau. Erst „Plädoyer in den Klassenraum hochladen“ sendet die Datei ab. Danach prüft die Lehrperson deinen Beitrag. Die Klasse sieht ihn erst nach ihrer Freigabe. Bei Bedarf kannst du ihn vor Ende der Einreichungsphase entfernen und neu einreichen.'},

@@ -5,7 +5,7 @@ type Row={id:string;label:string;assigned:string;key:string|null;video_status:st
 function download(value:string,name:string){const u=URL.createObjectURL(new Blob([value],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),500);}
 export default function TeacherLinks({session,canAdd,onChange}:{session:{id:string;key:string};canAdd:boolean;onChange:()=>Promise<void>}){
  const [rows,setRows]=useState<Row[]>([]),[names,setNames]=useState<Record<string,string>>({}),[status,setStatus]=useState(''),[busy,setBusy]=useState(false),[search,setSearch]=useState('');
- const link=(key:string)=>`${location.origin}${location.pathname}#plaedoyers?room=${session.id}&key=${key}`;
+ const link=(key:string)=>`${location.origin}${location.pathname}#fall?room=${session.id}&key=${key}`;
  async function request(path='',method='GET',data?:unknown){const r=await fetch(`${API}/rooms/${session.id}/invites${path}`,{method,headers:{Authorization:'Bearer '+session.key,...(data?{'Content-Type':'application/json'}:{})},body:data?JSON.stringify(data):undefined,signal:AbortSignal.timeout(15000)});const d=await r.json();if(!r.ok)throw new Error(d.error||'Linkverwaltung nicht verfügbar.');return d;}
  async function load(){const d=await request();setRows(d.invites);setNames(Object.fromEntries(d.invites.map((r:Row)=>[r.id,r.assigned])));}
  useEffect(()=>{load().catch(e=>setStatus(e.message));},[session.id,session.key]);

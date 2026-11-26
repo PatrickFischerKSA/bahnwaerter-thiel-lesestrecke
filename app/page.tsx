@@ -135,6 +135,18 @@ export default function Home() {
   useEffect(() => {
     const sync = () => {
       let r = decodeURIComponent(location.hash.slice(1)) || "fall";
+      const entry = new URLSearchParams(r.split("?")[1] || "");
+      const room = entry.get("room"), participantKey = entry.get("key");
+      if (room && participantKey && /^[a-f0-9]{16}$/.test(room) && /^[a-f0-9]{64}$/.test(participantKey)) {
+        try {
+          localStorage.setItem("thiel-plaedoyers-session:v1", JSON.stringify({ id: room, key: participantKey }));
+          history.replaceState(null, "", location.pathname + location.search + "#fall");
+          setNotice("Dein persönlicher Zugang ist auf diesem Gerät gespeichert. Beginne mit dem Tatortbefund. Danach folgen Lektüre und Film, Beweisaufnahme, Plädoyers und Urteil. Die Abstimmung steht am Schluss.");
+        } catch {
+          setNotice("Der Browser kann deinen Zugang nicht speichern. Bewahre deinen persönlichen Link auf und öffne ihn für die Teilnahme später erneut in einem Browser mit erlaubtem lokalen Speicher.");
+        }
+        r = "fall";
+      }
       if (stations.some((s) => s.id === r)) r = "vertiefung/" + r;
       if (r === "inhalt") return;
       if (r === "strecke") r = "lesen/anfang";
