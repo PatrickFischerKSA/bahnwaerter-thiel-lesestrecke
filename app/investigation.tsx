@@ -108,17 +108,12 @@ export default function Investigation({
           <span className="file-seal">Zurechnung ungeklärt</span>
         </div>
         {heading(
-          "Ermittlungsakte · Gerhart Hauptmann, 1888",
-          "Tatortbefund: Was ist gesichert?",
+          "Fallbeispiel · Gerhart Hauptmann, 1888",
+          "Der Fall Thiel: Was ist geschehen?",
           "Zwei Tote in der Wohnung. Ein Mann auf den Gleisen. In seiner Hand die Mütze seines verstorbenen Sohnes.",
         )}
-        <section className="panel padded">
-          <p className="eyebrow">Originalbefund · Textseite 66</p>
-          <blockquote>{text.find((p) => p.page === 66)?.text}</blockquote>
-          {ref(66)}
-        </section>
         <div className="evidence-divider">
-          <span>Tatort und Auffindesituation / Filmprotokoll</span>
+          <span>1 · Fallbeispiel / Drei kurze Filmsequenzen</span>
           <span>DEFA · 1982</span>
         </div>
         <section
@@ -202,15 +197,28 @@ export default function Investigation({
             über Thiels Zustand zur Tatzeit.
           </p>
         </section>
-        <CrimeSketch answers={answers} update={update} />
+        <section className="entry-stage" aria-labelledby="protokoll-heading">
+          <p className="eyebrow">2 · Protokoll</p>
+          <h2 id="protokoll-heading">Was wird gefunden, was wird beobachtet?</h2>
+          <p>Halte Personen, Orte, Gegenstände und beobachtbares Verhalten fest. Trenne die Auffindesituation von Vermutungen über die Tat.</p>
+        <section className="panel padded">
+          <p className="eyebrow">Originalbefund · Textseite 66</p>
+          <blockquote>{text.find((p) => p.page === 66)?.text}</blockquote>
+          {ref(66)}
+        </section>
+        {field("case:befundprotokoll", "Dein Befundprotokoll: Beobachtung · Fundstelle · offene Frage", "Was ist im Film sichtbar? Was steht im Text? Was lässt sich daraus noch nicht schliessen?")}
+          <details className="entry-module"><summary>Räumlichen Befund sichern: Skizze, Upload und Prüfung</summary>
+            <CrimeSketch answers={answers} update={update} />
+          </details>
+        </section>
         <div className="case-opening">
           <div>
-            <p className="case-stamp">Nach der Spurensicherung: die grundsätzliche Frage</p>
-            <h2>Charité oder Gefängnis?</h2>
+            <p className="case-stamp">3 · Das Dilemma kurz umrissen</p>
+            <h2>Gefängnis oder Krankenhaus?</h2>
             <p>
-              Entscheidend ist sein Zustand während der Tat. Die spätere
-              Einweisung ist ein Indiz, kein Urteil.
+              Soll Thiel für die Tötungen bestraft werden, benötigt er psychiatrische Behandlung – und wie hängen diese Fragen zusammen? Entscheidend ist auch sein Zustand zur Tatzeit. Die Überführung in die Charité ist noch kein Urteil.
             </p>
+            <details className="entry-module"><summary>Überlieferter Ablauf und offene Entscheidung</summary>
             <p>
               Arbeiter finden Lene und ihr kleines Kind getötet. Thiel sitzt an
               der Bahnstrecke. Er wird gewaltsam von den Gleisen entfernt,
@@ -231,8 +239,15 @@ export default function Investigation({
                 Historischen Massstab klären →
               </button>
             </div>
+            </details>
           </div>
         </div>
+        <section className="entry-stage" aria-labelledby="background-heading">
+          <p className="eyebrow">4 · Hintergründe</p>
+          <h2 id="background-heading">Welche Massstäbe gelten um 1888?</h2>
+          <p>Strafrecht, Psychiatrie und gesellschaftliche Bedingungen liefern die Massstäbe für die Untersuchung. Danach wird die Vorgeschichte Abschnitt für Abschnitt am Text rekonstruiert.</p>
+          <div className="actions"><button className="primary" onClick={() => go("kontext")}>Zeit, Recht und Psychiatrie</button><button onClick={() => go("quellen")}>Historische Originalquellen</button></div>
+          <details className="entry-module"><summary>Ermittlungsauftrag und drei Untersuchungsfragen</summary>
         <div className="case-columns">
           <section className="panel padded">
             <h2>Auftrag der Spurensicherung</h2>
@@ -275,6 +290,8 @@ export default function Investigation({
             </p>
           </section>
         </div>
+          </details>
+          <details className="entry-module"><summary>Charité, Moabit und die Serienfolge: Bilder und Materialien</summary>
         <section
           className="institution-spread"
           aria-label="Bildbelege zu Medizin und Strafvollzug"
@@ -383,19 +400,27 @@ export default function Investigation({
             </a>
           </div>
         </section>
+          </details>
+        </section>
+        <section className="entry-stage" aria-labelledby="repetition-heading">
+          <p className="eyebrow">5 · Genaue Textrepetition</p>
+          <h2 id="repetition-heading">Die Vorgeschichte am Wortlaut rekonstruieren.</h2>
+          <p>Acht Abschnitte führen vom Alltag bis zum Zusammenbruch. In jedem Abschnitt stehen zuerst Originaltext und Film, danach Detailfragen mit Feedback und Musterüberlegungen. Sichere die Belege für dein späteres Ergebnis.</p>
+          <button className="primary" onClick={() => go("lesen/anfang")}>Textrepetition beginnen: Alltag und erste Bindung</button>
+        </section>
         <section className="panel padded">
           <h2>Gang der Ermittlung</h2>
           <p><a href="#quellen">Historische Quellenakte: Gericht, Behandlung und philosophische Kritik</a></p>
           <ol className="case-steps">
             <li>
-              <a href="#lesen/anfang">
-                Rückrekonstruktion: acht Text- und Filmabschnitte vom Alltag bis
-                zum Zusammenbruch.
+              <a href="#kontext">
+                Tatort der Lektüre: Kaiserreich, Strafrecht, Psychiatrie.
               </a>
             </li>
             <li>
-              <a href="#kontext">
-                Tatort der Lektüre: Kaiserreich, Strafrecht, Psychiatrie.
+              <a href="#lesen/anfang">
+                Genaue Textrepetition: acht Text- und Filmabschnitte vom Alltag bis
+                zum Zusammenbruch.
               </a>
             </li>
             <li>
@@ -423,8 +448,8 @@ export default function Investigation({
           "Vorläufige Hypothese nach dem Schlussprotokoll",
           "Welche Erklärung steht zunächst im Raum – und was müsste sie belegen?",
         )}
-        <button className="primary" onClick={() => go("kontext")}>
-          Zeit und Institutionen →
+        <button className="primary" onClick={() => go("lesen/anfang")}>
+          Zur genauen Textrepetition
         </button>
       </article>
     );
@@ -638,7 +663,7 @@ export default function Investigation({
           </p>
         </section>
         <button className="primary" onClick={() => go("lesen/anfang")}>
-          Vorgeschichte rekonstruieren →
+          Zur genauen Textrepetition →
         </button>
       </>
     );
