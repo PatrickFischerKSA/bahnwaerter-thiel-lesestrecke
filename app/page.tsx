@@ -4,6 +4,7 @@ import AnswerSupport from "./answer-support";
 import { questionAngle } from "./solution-perspectives";
 import chapters from "./chapters.json";
 import pages from "./text.json";
+import Trial from "./trial";
 import Investigation from "./investigation";
 import { stations } from "./legacy-data";
 import { assess, factWarnings } from "./lib/feedback.mjs";
@@ -324,10 +325,12 @@ export default function Home() {
               </a>
             ))}
             <h2>03 · Material und Spuren</h2>
+            <a href="#prozess/vorbereitung" aria-current={route === "prozess/vorbereitung" ? "page" : undefined}>Rollen übernehmen · Prozess vorbereiten</a>
             <a href="#material">Neun Dossiers & Theorie-Videos</a>
             <a href="#quellen" aria-current={route === "quellen" ? "page" : undefined}>Historische Quellen: Recht & Behandlung</a>
             <a href="#spuren">Spurenregister</a>
             <h2>04 · Deutungen gegenprüfen</h2>
+            <a href="#prozess/verhandlung" aria-current={route === "prozess/verhandlung" ? "page" : undefined}>Verhandeln · Beweise und Einwände</a>
             {stations.map((s) => (
               <a
                 aria-current={station?.id === s.id ? "page" : undefined}
@@ -338,6 +341,7 @@ export default function Home() {
               </a>
             ))}
             <h2>05 · Ergebnis und Sicherung</h2>
+            <a href="#prozess/urteil" aria-current={route === "prozess/urteil" ? "page" : undefined}>Urteil begründen und verkünden</a>
             <a href="#bericht">Ermittlungsbericht</a>
             <a
               href="#grundlagen"
@@ -363,7 +367,7 @@ export default function Home() {
               {notice}
             </p>
           )}
-          {["fall", "kontext", "spuren", "bericht", "material", "quellen"].includes(
+          {route.startsWith("prozess/") ? <Trial key={route} route={route} answers={answers} update={update} /> : ["fall", "kontext", "spuren", "bericht", "material", "quellen"].includes(
             route,
           ) ||
           route.startsWith("material/") ||
@@ -615,8 +619,8 @@ export default function Home() {
                     Weiter: {chapters[index + 1].title} →
                   </button>
                 ) : (
-                  <button className="primary" onClick={() => go("bericht")}>
-                    Spuren bilanzieren →
+                  <button className="primary" onClick={() => go("prozess/vorbereitung")}>
+                    Rollen verteilen und Prozess vorbereiten →
                   </button>
                 )}
               </div>
@@ -698,14 +702,14 @@ export default function Home() {
                   onClick={() =>
                     go(
                       station.id === "deutung"
-                        ? "journal"
+                        ? "prozess/verhandlung"
                         : "vertiefung/" +
                             stations[stations.indexOf(station) + 1].id,
                     )
                   }
                 >
                   {station.id === "deutung"
-                    ? "Lesejournal sichern"
+                    ? "Einwände in die Verhandlung einbringen"
                     : "Nächste Vertiefung →"}
                 </button>
               </div>
@@ -714,11 +718,12 @@ export default function Home() {
                   <p className="eyebrow">Ankunft</p>
                   <h2>Ergebnis und Beweisgrenzen.</h2>
                   <p>
-                    Prüfe zum Schluss, ob deine These die Ambivalenz des Textes
-                    aushält: Thiel ist geprägt, aber nicht schuldlos; die
-                    Technik ist Gewaltmacht, aber nicht alleinige Täterin; die
-                    Natur ist Wahrnehmungsraum, aber kein einfacher
-                    Seelenspiegel.
+                    Bringe die Spannungen des Textes in die Verhandlung ein:
+                    Wie verhält sich Thiels Prägung zu seiner Verantwortlichkeit?
+                    Welche Rolle spielt die Technik neben menschlichen Handlungen?
+                    Wann erscheint Natur als Wahrnehmungsraum, wann wäre die
+                    Deutung als Seelenspiegel zu einfach? Diese Fragen legen das
+                    Urteil nicht vorab fest.
                   </p>
                 </section>
               )}
